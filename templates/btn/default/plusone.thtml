@@ -1,0 +1,5 @@
+<!-- plugins/assist/templates/btn/default/plusone.thtml  { -->
+<div class="twitter">
+	<g:plusone size="medium"></g:plusone>
+</div>
+<!-- } plugins/assist/templates/btn/default/plusone.thtml -->

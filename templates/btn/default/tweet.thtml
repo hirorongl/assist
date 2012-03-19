@@ -1,0 +1,6 @@
+<!-- plugins/assist/templates/btn/default/tweet.thtml  { -->
+ <div class="twitter">
+  <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a>
+  <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+ </div>
+<!-- } plugins/assist/templates/btn/default/tweet.thtml -->

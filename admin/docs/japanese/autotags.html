@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Assist | Geeklogドキュメント</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../docs/docstyle.css " title="Dev Stylesheet">
+  <link rel="stylesheet" type="text/css" href="../../../../../docs/japanese/docstyle.css " title="Dev Stylesheet">
+</head>
+
+<body>
+<p><a href="http://www.geeklog.jp" style="background:transparent"><img src="../../../../../docs/images/newlogo.gif" alt="Geeklog Documentation" width="243" height="90"></a></p>
+<div class="menu">
+<a href="../../../../../docs/japanese/index.html">Geeklogドキュメント</a>
+- <a href="index.html">Assist プラグイン</a>
+- 設定</div>
+<p>
+<a href="../../../../../">トップページ</a>
+ <a href="../../../../../admin/plugins/assist/">管理画面</a>
+</p>
+<h1><a href="index.html">Assist プラグイン</h1>
+
+
+<h2><a name="autotags">自動タグ</a>(2012/02/15 update)</h2>
+<table>
+<tr><th style="width:25%">書式</th>
+    <th style="width:75%">説明</th>
+</tr>
+<tbody>
+<tr>
+<td>[newstories:話題ID RSSファイル]</td>
+<td>
+新着記事（おしらせ）</br>
+例:[newstories:news news.rss]
+</td>
+</tr>
+
+<tr class="r2">
+<td>[newstories2:話題ID RSSファイルほか例1参照]</td>
+<td>
+新着記事（おしらせ）<br />
+例1:[newstories2:news rss_file:news.rss title_trim_length:50 intervalday:70 limitcnt:40 newmarkday:30 thtml:xxxx]<br />
+例2:話題news を全件表示  [newstories2:news intervalday:0]<br />
+例3:話題news を/テーマ/xxxx/ のテンプレートで表示  [newstories2:news thtml:xxxx]<br />
+</td>
+</tr>
+<tr>
+<td>[conf:変数名]</td>
+<td>$_CONF[変数名] の値を返す<br />
+例1：[conf:site_url]<br />
+例2：[conf:site_name]<br />
+例3：[conf:site_mail]<br />
+例4：[conf:site_slogan]<br />
+</td>
+</tr>
+<tr class="r2">
+<td>[assist:usercount]</td>
+<td>登録ユーザ数</td>
+
+<tr>
+<td>[assist:usercount_location]</td>
+<td>location登録ユーザ数</td>
+</tr>
+
+<tr class="r2">
+<td>[assist:staticpage_content]</td>
+<td>
+[assist:staticpage_content]id=blockpageの静的ページを無条件に表示する<br />
+[assist:staticpage_content id:xxxx urlkey:yyyy]urlにyyyyを含む場合にidがxxxx の静的ページを表示する<br />
+[assist:staticpage_content id:xxxx mode:home]ホームの場合にidがxxxx の静的ページを表示する<br />
+[assist:staticpage_content id:xxxx mode:sub]ホーム以外の場合にidがxxxx の静的ページを表示する<br />
+指定された静的ページを表示する権限のないユーザがアクセスしている場合は表示されません<br />
+modeが指定されている場合　urlkeyの指定は無視されます<br />
+idが指定されていない場合は、blockpage が指定されたものとします
+</td>
+</tr>
+
+<tr>
+<td>[assist:user_homepage uid:9]</td>
+<td>
+指定ユーザ（省略時ログインユーザ）のホームページ
+</td>
+</tr>
+
+
+<tr class="r2">
+<td>[assist:user_location uid:9]</td>
+<td>
+指定ユーザ（省略時ログインユーザ）の居住地
+</td>
+</tr>
+
+
+<tr>
+<td>[assist:user_sig uid:9]</td>
+<td>
+指定ユーザ（省略時ログインユーザ）の署名
+</td>
+</tr>
+
+
+<tr class="r2">
+<td>[assist:user_photo uid:9 width:9 height:9]</td>
+<td>
+指定ユーザ（省略時ログインユーザ）の写真
+</td>
+</tr>
+
+
+<tr>
+<td>[assist:user_about uid:9 ]</td>
+<td>
+指定ユーザ（省略時ログインユーザ）の自己紹介
+
+</td>
+</tr>
+
+
+<tr class="r2">
+<td>[assist:user_pgpkey uid:9 ]</td>
+<td>
+指定ユーザ（省略時ログインユーザ）のPGP鍵
+</td>
+</tr>
+
+
+<tr>
+<td>[assist:uid]</td>
+<td>
+ログインユーザのuid
+</td>
+</tr>
+
+
+<tr class="r2">
+<td>[assist:username uid:9]</td>
+<td>
+指定ユーザ（省略時ログインユーザ）のユーザ名
+</td>
+</tr>
+
+
+<tr>
+<td>[assist:fullname uid:9]</td>
+<td>
+指定ユーザ（省略時ログインユーザ）の氏名
+</td>
+</tr>
+
+<tr class="r2">
+<td>[assist:showgroup]</td>
+<td>
+ログインユーザの所属するグループ一覧出力
+</td>
+</tr>
+
+<tr>
+<td>[assit:newstories  話題ID RSSファイルほか例1参照]</td>
+<td>
+新着記事（おしらせ）<br />
+[assist:newstories]<br />
+例1:[assist:newstories topics:news rss_file:news.rss title_trim_length:50 intervalday:70 limitcnt:40 newmarkday:30 thtml:xxxx]<br />
+例2:話題news を全件表示  [assit:newstories topics:news intervalday:0]<br />
+例3:話題news を/テーマ/xxxx/ のテンプレートで表示  [assist:newstories topics:news thtml:xxxx]<br />
+</td>
+</tr>
+
+
+<tr class="r2">
+<td>
+[assit:home_id]
+</td>
+<td>
+home または sub （言語ファイルで変更可）
+</td>
+</tr>
+
+<tr>
+<td>
+[assit:login_status]
+</td>
+<td>
+member または guest （言語ファイルで変更可）
+</td>
+</tr>
+
+<tr class="r2">
+<td>
+[assit:topic_id]
+</td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>
+[assit:sp_id]
+</td>
+<td>
+</td>
+</tr>
+
+<tr class="r2">
+<td>
+[assit:rss RSSファイルほか例1参照]
+</td>
+<td>
+rss の表示<br />
+例1:[assist:rss urlrss:www.rentpro.co.jp/backend/databoxchintai.rss strip_tags:-1 description_trim_length:30 templatedir:aaa]<br />
+例2:[assist:rss]<br />
+</td>
+</tr>
+
+<tr >
+<td><a name="btn">
+[assist:btn typeほか例1参照 ]</a>
+</td>
+<td>
+ソーシャルボタン・ボックス の表示<br />
+例1:[assist:btn type:fblikebtn templatedir:aaa]<br />
+例2:[assist:btn type:evclip]<br />
+例3:[assist:btn type:fbcomment]<br />
+例4:[assist:btn type:tweet]<br />
+例5:[assist:btn type:plusone]<br />
+</td>
+</tr>
+
+<tr class="r2">
+<td>
+[assist:truncate text:x maxlen:9 filler:x endchars:9]
+</td>
+<td>
+文字列を区切る<br />
+例１；[assist:truncate text:あいうえおかきくけこ maxlen:3]<br>
+例２；[assist:truncate text:あいうえおかきくけこ maxlen:3 filler:...]<br>
+例３；[assist:truncate text:あいうえおかきくけこ maxlen:1 filler:... endchars:3]</td>
+</tr>
+
+</tbody>
+</table>
+<h2>ブロック用関数(2010/12/03 update)</h2>
+<table>
+<tr><th style="width:25%">関数名</th>
+    <th style="width:75%">説明</th>
+</tr>
+<tbody>
+<tr>
+  <td>phpblock_shownewstories</td>
+  <td>&nbsp;</td>
+</tr>
+<tr class="r2">
+  <td>phpblock_showstaticpage</td>
+  <td>id=blockpageの静的ページを表示する</td>
+</tr>
+<tr>
+  <td>phpblock_showgroup</td>
+  <td>ログインユーザの所属するグループ一覧出力</td>
+</tr>
+</tbody>
+</table>
+
+<div class="footer">
+    <a href="http://wiki.geeklog.net/">Geeklogドキュメント作成プロジェクト</a>、<a href="http://wiki.geeklog.jp/">Geeklogドキュメント日本語版作成プロジェクト</a><br />
+    本ページのすべての商標と著作権はそれぞれの所有者に帰属します。Geeklogはコピーレフトです。
+</div>
+
+</body>
+</html>

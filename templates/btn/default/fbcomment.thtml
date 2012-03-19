@@ -1,0 +1,5 @@
+<!-- plugins/assist/templates/btn/default/fbcomments.thtml  { -->
+<div id="fb-root"></div>
+<script src="http://connect.facebook.net/ja_JP/all.js#xfbml=1&appId={appid}"></script>
+<fb:comments href="{currenturl}" num_posts="3" width="520"></fb:comments>
+<!-- } plugins/assist/templates/btn/default/fbcomments.thtml -->

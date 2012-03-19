@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Assist | Geeklogドキュメント</title>
+  <link rel="stylesheet" type="text/css" href="../../../../../docs/docstyle.css " title="Dev Stylesheet">
+  <link rel="stylesheet" type="text/css" href="../../../../../docs/japanese/docstyle.css " title="Dev Stylesheet">
+</head>
+
+<body>
+<p><a href="http://www.geeklog.jp" style="background:transparent"><img src="../../../../../docs/images/newlogo.gif" alt="Geeklog Documentation" width="243" height="90"></a></p>
+<div class="menu">
+<a href="../../../../../docs/japanese/index.html">Geeklogドキュメント</a>
+- <a href="index.html">Assist プラグイン</a>
+- 設定</div>
+<p>
+<a href="../../../../../">トップページ</a>
+ <a href="../../../../../admin/plugins/assist/">管理画面</a>
+</p>
+<h1><a href="index.html">Assist プラグイン</h1>
+
+
+<h2><a name="templatesetvars">テーマ変数</a>(2012/02/15	 update)</h2>
+<table>
+<tr>
+	<th style="width:20%">画面</th>
+	<th style="width:20%">【フォルダ】テンプレート</th>
+    <th style="width:60%">テーマ変数</th>
+</tr>
+<tbody>
+
+
+<tr class="r2">
+<td>
+ソーシャルボタン・ボックス
+</td>	
+<td>
+【btn】
+　</td>
+ <td>
+currenturl,appid<a title="Geeklogのコンフィギュレーション設定でFacebook OAuth Application IDの設定が必要です" class="note_super" href="#notefoot_1" id="notetext_1">*1</a>
+
+</td>	
+
+</tr>
+
+<tr>
+<td  rowspan=3>
+headercode
+</td>
+<td>
+【headercode】articles.thtml 記事
+</td>
+<td   rowspan=3>
+
+xhtml,
+site_url,
+currenturl,
+site_name,
+site_mail,
+og_title,
+og_image,
+og_description,
+og_type
+facebook_consumer_key<a title="Geeklogのコンフィギュレーション設定でFacebook OAuth Application IDの設定が必要です" class="note_super" href="#notefoot_1" id="notetext_1">*1</a>
+</td>
+</tr>
+
+<tr >
+<td>
+【headercode】frontpage.thtml　トップページ
+</td>
+</tr>
+
+<tr >
+<td>
+【headercode】topictop.thtml　話題トップページ
+</td>
+</tr>
+
+
+
+
+
+<tr  class="r2">
+<td>
+newstories
+</td>
+<td>【newstories】stories.thtml stories_col.thtml</td>
+<td>
+rss_url,rss_title ,more_url,more_title<br/>
+stories_col<br/>
+day,new_img,url,title
+</td>
+</tr>
+
+<tr >
+<td>
+rss
+</td>
+<td>【rss】rss.thtml rss_col.thtml</td>
+<td>
+head_link,head_title,image_link,image_url,image_title,
+head_description,
+head_webmaster,
+head_copyright<br/>
+rss_col<br/>
+link,title,pubdate,description
+</td>
+</tr>
+
+</tbody>
+</table>
+
+<a class="note_super" href="#notetext_1" id="notefoot_1">*1</a>
+<span class="small">Geeklogのコンフィギュレーション設定でFacebook OAuth Application IDの設定が必要です。</span><br/>
+
+
+<div class="footer">
+    <a href="http://wiki.geeklog.net/">Geeklogドキュメント作成プロジェクト</a>、<a href="http://wiki.geeklog.jp/">Geeklogドキュメント日本語版作成プロジェクト</a><br />
+    本ページのすべての商標と著作権はそれぞれの所有者に帰属します。Geeklogはコピーレフトです。
+</div>
+
+</body>
+</html>

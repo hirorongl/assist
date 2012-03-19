@@ -1,0 +1,6 @@
+<!-- plugins/assist/templates/btn/default/fblikebtn.thtml  { -->
+<div>
+<iframe src="http://www.facebook.com/plugins/like.php?href={currenturl}&amp;layout=button_count&amp;show_faces=true&amp;width=75&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:150px; height:21px">
+</iframe>
+</div>
+<!-- } plugins/assist/templates/btn/default/fblikebtn.thtml -->

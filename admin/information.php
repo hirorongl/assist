@@ -1,0 +1,106 @@
+<?php
+
+/* Reminder: always indent with 4 spaces (no tabs). */
+// +---------------------------------------------------------------------------+
+// | information.php 更新                                                      |
+// +---------------------------------------------------------------------------+
+// $Id: information.php
+// public_html/admin/plugins/assist/information.php
+// 20091204 tsuchi AT geeklog DOT jp
+// $Id: information.php
+// last update 20111021
+
+define ('THIS_SCRIPT', 'information.php');
+
+include_once('assist_functions.php');
+
+// +---------------------------------------------------------------------------+
+// | 機能  表示                                                                |
+// | 書式 fncDisplay()                                                         |
+// +---------------------------------------------------------------------------+
+// | 戻値 nomal:表示                                                           |
+// +---------------------------------------------------------------------------+
+function fncDisplay()
+{
+    global $_CONF;
+	global $LANG_ASSIST_ADMIN;
+    global $_ASSIST_CONF;
+
+    $retval="";
+
+    $pi_name="assist";
+    $tmplfld=assist_templatePath('admin','default',$pi_name);
+    $T = new Template($tmplfld);
+	
+	$lang = COM_getLanguageName();
+	$path = 'admin/plugins/assist/docs/';
+	//$path = 'docs/';
+	if (!file_exists($_CONF['path_html'] . $path . $lang . '/')) {
+		$lang = 'japanese';//'english';
+	}
+	$document_url = $_CONF['site_url'] . '/' . $path . $lang . '/';
+	
+	$T->set_file ('admin','information.thtml');
+	$T->set_var ('pi_name',$pi_name);
+	$T->set_var('version',$_ASSIST_CONF['version']);
+	
+	$T->set_var('piname', $LANG_ASSIST_ADMIN['piname']);
+	$T->set_var('about_thispage', $LANG_ASSIST_ADMIN['about_admin_information']);
+	
+	$T->set_var('lang_document', $LANG_ASSIST_ADMIN['document']);
+	$T->set_var('document_url',$document_url);
+	
+	$T->set_var('online', $LANG_ASSIST_ADMIN['online']);
+	$T->set_var('lang_configuration', $LANG_ASSIST_ADMIN['configuration']);
+	$T->set_var('lang_autotags', $LANG_ASSIST_ADMIN['autotags']);
+	
+    $T->set_var('site_url', $_CONF['site_url']);
+    $T->set_var('site_admin_url', $_CONF['site_admin_url']);
+
+    $T->parse('output', 'admin');
+    $retval.= $T->finish($T->get_var('output'));
+
+    return $retval;
+}
+
+
+// +---------------------------------------------------------------------------+
+// | MAIN                                                                      |
+// +---------------------------------------------------------------------------+
+// 引数
+
+if ($mode=="" OR $mode=="importform" OR $mode=="deleteform") {
+}else{
+    if (!SEC_checkToken()){
+ //    if (SEC_checkToken()){//テスト用
+        COM_accessLog("User {$_USER['username']} tried to illegally and failed CSRF checks.");
+        echo COM_refresh($_CONF['site_admin_url'] . '/index.php');
+        exit;
+    }
+}
+$menuno=1;
+$display = '';
+
+//
+$page_title=$LANG_ASSIST_ADMIN['piname'];
+$display .= COM_siteHeader ('menu', $page_title);
+//$display .= COM_siteHeader ('none', $page_title);
+
+if (isset ($_REQUEST['msg'])) {
+    $display .= COM_showMessage (COM_applyFilter ($_REQUEST['msg'],
+                                                  true), 'assist');
+}
+
+$display.=ppNavbarjp($navbarMenu,$LANG_ASSIST_admin_menu[$menuno]);
+
+$display.=fncDisplay();
+
+//$display .= COM_siteFooter();
+$_CONF['show_right_blocks']=0;
+$_CONF['left_blocks_in_footer']=0;
+$display .= COM_siteFooter(false);
+
+
+echo $display;
+
+?>
