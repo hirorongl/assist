@@ -5,7 +5,7 @@
 // +---------------------------------------------------------------------------+
 // $Id: plugins/assist/functions.inc
 //2009/12/04 tsuchitani AT ivywe DOT co DOT jp http://www.ivywe.co.jp/
-//last update 20120214
+//last update 20120409
 
 
 if (strpos ($_SERVER['PHP_SELF'], 'functions.inc') !== false) {
@@ -74,25 +74,39 @@ function plugin_chkVersion_assist ()
 function plugin_upgrade_assist ()
 // +---------------------------------------------------------------------------+
 // | 機能  プラグイン更新
-// | バージョンナンバーの更新
 // +---------------------------------------------------------------------------+
 {
 	global $_TABLES;
 	global $_CONF;
 	global $_ASSIST_CONF;
+	global $config;
+	
+	$pi_name    = 'assist';
 
     // the plugin needs these functions so complain when they doesn't exist
     if (!function_exists ('COM_truncate') ||
         !function_exists ('MBYTE_strpos')) {
         return 3002;
-    }
+	}
 	
+	$installed_version = DB_getItem($_TABLES['plugins'], 'pi_version',
+                                    "pi_name = '{$pi_name}'");
+	$newversion=$_ASSIST_CONF['version'];
+	
+		//update the configuration
+		require_once ($_CONF['path'] . 'plugins/assist/lib/lib_configuration.php');
 
-    // バージョンナンバーの更新
-	DB_query ("UPDATE {$_TABLES['plugins']} 
-		SET pi_version = '{$_ASSIST_CONF['version']}'
-		, pi_gl_version = '" . VERSION . "' 
-		WHERE pi_name = 'assist'");
+		$rt=LIB_Backupconfig($pi_name,"update");
+		$rt=LIB_Deleteconfig($pi_name,$config);
+		$rt=LIB_Initializeconfig($pi_name);
+		$rt=LIB_Restoreconfig($pi_name,$config,"update");
+	
+	//update the version numbers
+	$sql="UPDATE {$_TABLES['plugins']} SET";
+	$sql.=" pi_version = '{$newversion}' ";
+	$sql.=" ,pi_gl_version = '" . VERSION . "'";
+	$sql.="	WHERE pi_name = '{$pi_name}'";
+    DB_query ($sql);
 
     return true;
 }
@@ -292,7 +306,8 @@ function assist_GetHeaderCode(
 	global $_CONF;
 	global $_TABLES;
 	global $_IMAGE_TYPE;
-	
+	global $_ASSIST_CONF;
+
 	$pi_name="assist";
 	$retval="";
 	
@@ -306,8 +321,13 @@ function assist_GetHeaderCode(
 		$type = 'frontpage';
 		$og_type="website";
 		
-		$og_title=$_CONF['site_name'] . ' - ' . $_CONF['site_slogan'];;
-		$og_image=$site_logo;
+		$og_title=$_CONF['site_name'] . ' - ' . $_CONF['site_slogan'];
+		
+		$og_image =$_ASSIST_CONF["default_img_url"];
+		if ($og_image===""){
+			$og_image=$site_logo;
+		}
+		
 		if ($_CONF['meta_tags']==0 OR $_CONF['meta_description']=="") {
 			$og_description = $_CONF['site_slogan'];
 		}else{
@@ -342,7 +362,10 @@ function assist_GetHeaderCode(
 			if ($image<>""){
 				$og_image=$image;
 			}else{
-				$og_image=$site_logo;
+				$og_image =$_ASSIST_CONF["default_img_url"];
+				if ($og_image===""){
+					$og_image=$site_logo;
+				}
 			}
 			
 			if ($_CONF['meta_tags']==0 OR $meta_description=="") {
@@ -353,12 +376,6 @@ function assist_GetHeaderCode(
 				$og_description = $meta_description;
 			}
 		}
-			
-			
-			
-			
-			
-			
 			
 	//article
 	} else if (preg_match("@article\.php(?:\?story=|/)(.+)$@i", $currenturl, $match)) {
@@ -390,7 +407,10 @@ function assist_GetHeaderCode(
 			if ($image<>""){
 				$og_image=$image;
 			}else{
-				$og_image=$site_logo;
+				$og_image =$_ASSIST_CONF["default_img_url"];
+				if ($og_image===""){
+					$og_image=$site_logo;
+				}
 			}
 			$introtext = COM_getTextContent($introtext );
 			$bodytext  = COM_getTextContent($bodytext);

@@ -96,6 +96,10 @@ $_ASSIST_DEFAULT['xmlns'] =
 .' xmlns:og="http://ogp.me/ns#"'.LB
 .' xmlns:mixi="http://mixi-platform.com/ns#"'.LB;
 
+//デフォルト画像URL
+$_ASSIST_DEFAULT['default_img_url'] = "";
+
+
 //() autotag permissions
 $_ASSIST_DEFAULT['autotag_permissions_newstories'] = array (2, 2, 2, 2);
 $_ASSIST_DEFAULT['autotag_permissions_newstories2'] = array (2, 2, 2, 2);
@@ -260,6 +264,13 @@ function plugin_initconfig_assist()
 			, $pi_name
 			,0);
 		
+		$c->add(
+            'default_img_url'
+            ,$_DATABOX_DEFAULT['default_img_url']
+            ,'text', 0, 0, NULL, 260, TRUE
+			, $pi_name
+			,0);
+
 		//(1)autotag_permissions
         $c->add('tab_autotag_permissions', NULL, 'tab', 0, 1, NULL, 0, true, $pi_name, 1);
         $c->add(

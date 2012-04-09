@@ -1,7 +1,7 @@
 <?php
 ###############################################################################
 # plugins/assist/language/english.php
-# Last Update 20120202
+# Last Update 20120409
 ###############################################################################
 ## Admin
 $LANG_ASSIST_admin_menu = array();
@@ -60,44 +60,16 @@ See the /admin/plugins/assist/docs/japanese/autotags.html file for more informat
 ";
 $LANG_ASSIST_autotag_desc['assist']="
 [assist:〜] - <br{xhtml}>	
-[assist:usercount]ほか!!<br{xhtml}>
+[assist:usercount]others<br{xhtml}>
 See the /admin/plugins/assist/docs/japanese/autotags.html file for more informations.
 <a href=\"{$_CONF['site_admin_url']}/plugins/assist/docs/japanese/autotags.html\">*</a>
 ";
 
 
 ###########
-
-	$LANG_ASSIST['list']="List";
-	$LANG_ASSIST['selectit']="Non selected";
-
-	$LANG_ASSIST['data'] = 'Data';
-	$LANG_ASSIST['mydata'] = 'My data';
-
-	$LANG_ASSIST['Norecentnew'] = 'There is no data';
-	$LANG_ASSIST['nohit'] = 'There is no data';
-	$LANG_ASSIST['nopermission'] = 'Access is denied';
-
-	$LANG_ASSIST['more'] = 'More';
-	$LANG_ASSIST['day'] = "{$_CONF['shortdate']}";
-
 $LANG_ASSIST['home']="HOME";
 $LANG_ASSIST['view']="View";
 $LANG_ASSIST['articles']="Articles";
-
-	$LANG_ASSIST['count']="hits";
-	$LANG_ASSIST['category_top']="Article number by topics";
-	$LANG_ASSIST['field_top']="Article number by fields";
-	$LANG_ASSIST['search_link']="";
-
-	//$LANG_ASSIST['category_separater']="</li><li>";
-	$LANG_ASSIST['category_separater']="、";
-	$LANG_ASSIST['category_separater_text']="、";
-
-	$LANG_ASSIST['loginrequired'] = '(Please Log in)';
-
-	$LANG_ASSIST['lastmodified'] = 'modified: %B%e%Y';
-	$LANG_ASSIST['lastcreated'] = 'Created: %B%e%Y';
 
 ###############################################################################
 # admin/plugins/
@@ -178,9 +150,6 @@ $LANG_ASSIST_ADMIN['sendto_remarks']="NOTE: if you wish to send all users, set 0
 
 $LANG_ASSIST_ADMIN['mail_test'] = 'Send now for testing';
 $LANG_ASSIST_ADMIN['mail_send'] = 'Send now';
-
-//not used
-$LANG_ASSIST_ADMIN['last_schedule']='assist CRON date';
 
 //backup&restore
 $LANG_ASSIST_ADMIN['config'] = 'Configuration';
@@ -275,13 +244,8 @@ $LANG_ASSIST_ADMIN['err_type'] = 'Ignore type';//@@@@@
 
 $LANG_ASSIST_ADMIN['err_field_w'] = 'The field is already exist.';
 
-
 $LANG_ASSIST_ADMIN['err_backup_file_not_exist'] = 'No backup files';
 $LANG_ASSIST_ADMIN['err_backup_file_non_rewritable'] = 'Not rewritable';
-
-
-
-
 
 $LANG_ASSIST_ADMIN['err_fromname'] = 'Please fill in all the fields on the form and select a group of users from the drop down.';
 $LANG_ASSIST_ADMIN['err_replyto'] = 'Please fill in all the fields on the form and select a group of users from the drop down.';
@@ -396,6 +360,7 @@ $LANG_confignames['assist']['onoff_emailfromadmin'] = 'display_status_of_emailfr
 $LANG_confignames['assist']['aftersave'] = 'Screen changes after saved: General';
 $LANG_confignames['assist']['aftersave_admin'] = 'Screen changes after saved: Admin';
 $LANG_confignames['assist']['xmlins'] = 'xmlins';
+$LANG_confignames['assist']['default_img_url'] = 'default image url';
 
 //---(１)
 $LANG_tab['assist']['tab_autotag_permissions'] = 'Autotag permission';

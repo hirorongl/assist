@@ -60,44 +60,16 @@ See the /admin/plugins/assist/docs/japanese/autotags.html file for more informat
 ";
 $LANG_ASSIST_autotag_desc['assist']="
 [assist:〜] - <br{xhtml}>	
-[assist:usercount]ほか!!<br{xhtml}>
+[assist:usercount]others<br{xhtml}>
 See the /admin/plugins/assist/docs/japanese/autotags.html file for more informations.
 <a href=\"{$_CONF['site_admin_url']}/plugins/assist/docs/japanese/autotags.html\">*</a>
 ";
 
 
 ###########
-
-	$LANG_ASSIST['list']="List";
-	$LANG_ASSIST['selectit']="Non selected";
-
-	$LANG_ASSIST['data'] = 'Data';
-	$LANG_ASSIST['mydata'] = 'My data';
-
-	$LANG_ASSIST['Norecentnew'] = 'There is no data';
-	$LANG_ASSIST['nohit'] = 'There is no data';
-	$LANG_ASSIST['nopermission'] = 'Access is denied';
-
-	$LANG_ASSIST['more'] = 'More';
-	$LANG_ASSIST['day'] = "{$_CONF['shortdate']}";
-
 $LANG_ASSIST['home']="HOME";
 $LANG_ASSIST['view']="View";
 $LANG_ASSIST['articles']="Articles";
-
-	$LANG_ASSIST['count']="hits";
-	$LANG_ASSIST['category_top']="Article number by topics";
-	$LANG_ASSIST['field_top']="Article number by fields";
-	$LANG_ASSIST['search_link']="";
-
-	//$LANG_ASSIST['category_separater']="</li><li>";
-	$LANG_ASSIST['category_separater']="、";
-	$LANG_ASSIST['category_separater_text']="、";
-
-	$LANG_ASSIST['loginrequired'] = '(Please Log in)';
-
-	$LANG_ASSIST['lastmodified'] = 'modified: %B%e%Y';
-	$LANG_ASSIST['lastcreated'] = 'Created: %B%e%Y';
 
 ###############################################################################
 # admin/plugins/
@@ -134,17 +106,8 @@ $LANG_ASSIST_ADMIN['mail2'] = 'Email settings';
 
 $LANG_ASSIST_ADMIN['submit'] = 'Submit';
 
-//vers
-//not used
-$LANG_ASSIST_ADMIN['last_scheduled_run'] = 'CRON(last_scheduled_run)';
-
-
 //newsletter
 $LANG_ASSIST_ADMIN['mail_logfile'] ="Log file %s is ignored.<br{xhtml}>";
-
-//not used
-$LANG_ASSIST_ADMIN['mail_cron_off'] ="Cron schedule is ignore.<br{xhtml}>";
-$LANG_ASSIST_ADMIN['mail_cron_on'] ="assist Cron schedule is %s sec.(%s min.)<br{xhtml}>";
 
 $LANG_ASSIST_ADMIN['mail_msg'] =
 "Create story by topic '%s'. <br{xhtml}>"
@@ -178,9 +141,6 @@ $LANG_ASSIST_ADMIN['sendto_remarks']="NOTE: if you wish to send all users, set 0
 
 $LANG_ASSIST_ADMIN['mail_test'] = 'Send now for testing';
 $LANG_ASSIST_ADMIN['mail_send'] = 'Send now';
-
-//not used
-$LANG_ASSIST_ADMIN['last_schedule']='assist CRON date';
 
 //backup&restore
 $LANG_ASSIST_ADMIN['config'] = 'Configuration';
@@ -396,6 +356,7 @@ $LANG_confignames['assist']['onoff_emailfromadmin'] = 'display_status_of_emailfr
 $LANG_confignames['assist']['aftersave'] = 'Screen changes after saved: General';
 $LANG_confignames['assist']['aftersave_admin'] = 'Screen changes after saved: Admin';
 $LANG_confignames['assist']['xmlins'] = 'xmlins';
+$LANG_confignames['assist']['default_img_url'] = 'default image url';
 
 //---(１)
 $LANG_tab['assist']['tab_autotag_permissions'] = 'Autotag permission';

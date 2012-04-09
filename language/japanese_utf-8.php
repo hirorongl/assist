@@ -2,7 +2,7 @@
 ###############################################################################
 # plugins/assist/language/japanese_utf-8.php
 # もし万一エンコードの種類が　UTF-8でない場合は、utf-8に変換してください。
-# Last Update 20120213
+# Last Update 20120409
 ###############################################################################
 ## 管理画面
 $LANG_ASSIST_admin_menu = array();
@@ -15,9 +15,6 @@ $LANG_ASSIST_admin_menu['4']= 'ニュースレター';
 $LANG_ASSIST_admin_menu['5']= 'バックアップ＆リストア';
 
 $LANG_ASSIST_admin_menu['8']= 'Proversion';
-
-
-
 
 ###############################################################################
 $LANG_ASSIST= array(
@@ -61,44 +58,16 @@ $LANG_ASSIST_autotag_desc['conf']="
 ";
 $LANG_ASSIST_autotag_desc['assist']="
 [assist:〜] - <br{xhtml}>	
-[assist:usercount]ほか!!<br{xhtml}>
+[assist:usercount]ほか<br{xhtml}>
 詳細は、assistプラグインのドキュメントを参照してください。
 <a href=\"{$_CONF['site_admin_url']}/plugins/assist/docs/japanese/autotags.html\">*</a>
 ";
 
 
 ###########
-
-	//$LANG_ASSIST['list']="一覧";
-	//$LANG_ASSIST['selectit']="指定なし";
-
-	//$LANG_ASSIST['data'] = 'データ表示';
-	//$LANG_ASSIST['mydata'] = 'マイデータ';
-
-	//$LANG_ASSIST['Norecentnew'] = '新しいデータはありません';
-	//$LANG_ASSIST['nohit'] = '該当データはありません';
-	//$LANG_ASSIST['nopermission'] = '閲覧できません';
-
-	//$LANG_ASSIST['more'] = 'もっとみる';
-	//$LANG_ASSIST['day'] = "{$_CONF['shortdate']}";
-
 $LANG_ASSIST['home']="HOME";
 $LANG_ASSIST['view']="表示";
 $LANG_ASSIST['articles']="記事一覧";
-
-	//$LANG_ASSIST['count']="件数";
-	//$LANG_ASSIST['category_top']="カテゴリ別件数一覧";
-	//$LANG_ASSIST['field_top']="項目別件数一覧";
-	//$LANG_ASSIST['search_link']="";
-
-	//$LANG_ASSIST['category_separater']="</li><li>";
-	//$LANG_ASSIST['category_separater']="、";
-	//$LANG_ASSIST['category_separater_text']="、";
-
-	//$LANG_ASSIST['loginrequired'] = '（ログインしてください）';
-
-	//$LANG_ASSIST['lastmodified'] = '%Y年%B%e日更新';
-	//$LANG_ASSIST['lastcreated'] = '%Y年%B%e日追加';
 
 ###############################################################################
 # admin/plugins/
@@ -137,17 +106,8 @@ $LANG_ASSIST_ADMIN['mail2'] = '送信設定';
 
 $LANG_ASSIST_ADMIN['submit'] = '実行';
 
-//vers
-//下記行は現在使用していません
-//$LANG_ASSIST_ADMIN['last_scheduled_run'] = '擬似クーロン実行日(last_scheduled_run)';
-
-
 //newsletter
 $LANG_ASSIST_ADMIN['mail_logfile'] ="ログファイル%sが無効になっています。<br{xhtml}>";
-
-//下記２行は現在使用していません
-//$LANG_ASSIST_ADMIN['mail_cron_off'] ="Cronスケジュールが無効になっています。<br{xhtml}>";
-//$LANG_ASSIST_ADMIN['mail_cron_on'] ="assist用Cronスケジュールは %s 秒(%s分)になっています。<br{xhtml}>";
 
 $LANG_ASSIST_ADMIN['mail_msg'] =
 "送信用記事を話題「 %s 」であらかじめ用意してください。<br{xhtml}>"
@@ -182,9 +142,6 @@ $LANG_ASSIST_ADMIN['sendto_remarks']="※範囲指定しない場合は、0〜0�
 
 $LANG_ASSIST_ADMIN['mail_test'] = 'テスト送信';
 $LANG_ASSIST_ADMIN['mail_send'] = '即送信';
-
-//下記行は現在使用していません
-$LANG_ASSIST_ADMIN['last_schedule']='assist用擬似クーロン実行日';
 
 //backup&restore
 $LANG_ASSIST_ADMIN['config'] = 'コンフィギュレーション';
@@ -286,15 +243,10 @@ $LANG_ASSIST_ADMIN['err_field_w'] = '当フィールドはすでに登録され�
 $LANG_ASSIST_ADMIN['err_backup_file_not_exist'] = 'バックアップファイルがありません';
 $LANG_ASSIST_ADMIN['err_backup_file_non_rewritable'] = 'バックアップファイル書換できません';
 
-
-
-
-
 $LANG_ASSIST_ADMIN['err_fromname'] = '差出人が登録されていません';
 $LANG_ASSIST_ADMIN['err_replyto'] = '差出人メールアドレスが登録されていません';
 $LANG_ASSIST_ADMIN['err_sid'] = '記事が選択されていません';
 $LANG_ASSIST_ADMIN['err_testto'] = 'テスト送信先が正しく登録されていません';
-
 
 $LANG_ASSIST_ADMIN['err_backup_file_not_exist'] = 'バックアップファイルがありません';
 $LANG_ASSIST_ADMIN['err_backup_file_non_rewritable'] = 'バックアップファイル書換できません';
@@ -337,7 +289,6 @@ $LANG_ASSIST_ADMIN['minute'] = '分';
 $LANG_ASSIST_ADMIN['every'] = 'おき';
 $LANG_ASSIST_ADMIN['increments'] = '件づつ';
 
-
 $LANG_ASSIST_ADMIN['yy'] = '年';
 $LANG_ASSIST_ADMIN['mm'] = '月';
 $LANG_ASSIST_ADMIN['dd'] = '日';
@@ -366,7 +317,6 @@ $PLG_assist_MESSAGE3  = '問題を確認してください。';
 // Messages for the plugin upgrade
 $PLG_assist_MESSAGE3002 = $LANG32[9];
 
-
 ###############################################################################
 # configuration
 // Localization of the Admin Configuration UI
@@ -377,7 +327,6 @@ $LANG_configsections['assist']['title'] = 'Assistの設定';
 $LANG_configsubgroups['assist']['sg_main'] = 'メイン';
 
 //---()
-
 $LANG_tab['assist']['tab_main'] = 'メイン設定';
 $LANG_fs['assist']['fs_main'] = 'メイン設定';
 
@@ -403,6 +352,7 @@ $LANG_confignames['assist']['onoff_emailfromadmin'] = '管理者からのメー�
 $LANG_confignames['assist']['aftersave'] = '保存後の画面遷移 一般画面';
 $LANG_confignames['assist']['aftersave_admin'] = '保存後の画面遷移 管理画面';
 $LANG_confignames['assist']['xmlins'] = 'xmlins';
+$LANG_confignames['assist']['default_img_url'] = 'デフォルト画像URL';
 
 //---(１)
 $LANG_tab['assist']['tab_autotag_permissions'] = '自動タグのパーミッション';
@@ -442,8 +392,6 @@ $LANG_configselects['assist'][9] =array(
     , 'ホームを表示する' => 'home'
     , '管理画面トップを表示する' => 'admin'
     , 'プラグイントップを表示する' => 'plugin'
-
         );
-
 
 ?>
