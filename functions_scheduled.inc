@@ -88,8 +88,8 @@ function assist_scheduled_reserv_sendmail ($file)
 
 	$html = false ;    // If you want to send html mail
 	
-	//$test_on=false;//
-	$test_on=true;//@@@@@テスト中  送信しない
+	$test_on=false;//
+	//$test_on=true;//@@@@@テスト中  送信しない
 	
 	$logmode =1;
 	if ($test_on){
