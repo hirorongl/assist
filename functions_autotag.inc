@@ -332,6 +332,7 @@ function phpblock_shownewstories(
 // 2009/04/02　引数 $thtml追加
 // 2009/04/02　テンプレート変数 class 追加
 // 2009/04/02　$intervalday=0の時全件
+// 2012/05/02  テーマ変数　introtext description　追加
 {
 
     global $_USER;
@@ -440,45 +441,50 @@ function phpblock_shownewstories(
         ));
 
 
-    $sql="SELECT ";
-    $sql.=" s.title";
-    $sql.=" , UNIX_TIMESTAMP(s.date) AS day";
-    $sql.=" , t.topic";
-    $sql.=" , s.tid";
-    $sql.=" , s.sid";
+    $sql="SELECT ".LB;
+	$sql.=" s.title".LB;
+	$sql.=" ,s.meta_description".LB;
+	$sql.=" ,s.introtext".LB;
+    $sql.=" , UNIX_TIMESTAMP(s.date) AS day".LB;
+    $sql.=" , t.topic".LB;
+    $sql.=" , s.tid".LB;
+    $sql.=" , s.sid".LB;
 
-    $sql.=" FROM ";
-    $sql.=" {$_TABLES['stories']} AS s";
-    $sql.=" ,{$_TABLES['topics']} AS t";
+	$sql.=" FROM ".LB;
+    $sql.=" {$_TABLES['stories']} AS s".LB;
+    $sql.=" ,{$_TABLES['topics']} AS t".LB;
 
-    $sql.=" WHERE";
-    $sql.="  s.tid = t.tid";
-    $sql.=" AND t.archive_flag=0 ";
-    $sql.=" AND s.draft_flag=0 ";
-    $sql.=" AND date <= NOW() ";
+    $sql.=" WHERE".LB;
+    $sql.="  s.tid = t.tid".LB;
+    $sql.=" AND t.archive_flag=0 ".LB;
+    $sql.=" AND s.draft_flag=0 ".LB;
+    $sql.=" AND date <= NOW() ".LB;
 
     if ($intervalday<>0){
-        $sql.=" AND (date >= (date_sub(NOW(), INTERVAL $intervalday day)))";
+        $sql.=" AND (date >= (date_sub(NOW(), INTERVAL $intervalday day)))".LB;
     }
 
     if ($topics!=="'ALL'" ){
-        $sql.=" AND s.tid IN ($topics)";
+        $sql.=" AND s.tid IN ($topics)".LB;
     }
     $sql .= COM_getTopicSql ('AND', 0, 's');
     $sql .= COM_getPermSql ('AND', 0, 2, 's' );
     $sql .= COM_getLangSQL ('sid', 'AND');
 
-    $sql.=" ORDER BY date DESC";
+    $sql.=" ORDER BY date DESC".LB;
 
-    $sql.=" LIMIT $limitcnt";
+    $sql.=" LIMIT $limitcnt".LB;
 
     $result = DB_query ($sql);
 
     $i=0;
     while( $A = DB_fetchArray( $result ) )    {
+		$A = array_map('stripslashes', $A);
 
         $url=COM_buildUrl($_CONF['site_url'] . '/article.php?story=' . $A['sid']);
         $title= COM_truncate( $A['title'], $title_trim_length,'...' );
+        $meta_description= $A['meta_description'];
+        $introtext= $A['introtext'];
 
         $list->set_var ('site_url', $_CONF['site_url']);
         $list->set_var ('day', strftime($LANG_ASSIST[2],$A['day']));
@@ -492,7 +498,11 @@ function phpblock_shownewstories(
 
         $list->set_var ('url', $url);
         $list->set_var ('title', $title);
-        $n=($i%2)+1;
+		
+		$list->set_var ('meta_description', $meta_description);
+		$list->set_var ('introtext', $introtext);
+		
+		$n=($i%2)+1;
         $class='class="row'.$n.'"';
         $list->set_var ('class', 'class="row'.$n.'"');
 
