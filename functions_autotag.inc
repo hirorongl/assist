@@ -437,7 +437,8 @@ function phpblock_shownewstories(
 
     $list->set_file (array (
         'list' => 'stories.thtml',
-        'col'   => 'stories_col.thtml'
+        'col'   => 'stories_col.thtml',
+		'col_ft'   => 'featuredstories_col.thtml'
         ));
 
 
@@ -445,6 +446,9 @@ function phpblock_shownewstories(
 	$sql.=" s.title".LB;
 	$sql.=" ,s.meta_description".LB;
 	$sql.=" ,s.introtext".LB;
+	$sql.=" ,s.introtext".LB;
+	$sql.=" ,s.featured".LB;
+	
     $sql.=" , UNIX_TIMESTAMP(s.date) AS day".LB;
     $sql.=" , t.topic".LB;
     $sql.=" , s.tid".LB;
@@ -505,9 +509,12 @@ function phpblock_shownewstories(
 		$n=($i%2)+1;
         $class='class="row'.$n.'"';
         $list->set_var ('class', 'class="row'.$n.'"');
-
-        $list->parse ('stories_col', 'col', true);
-
+		
+		if ($A['featured']==1){
+			$list->parse ('stories_col', 'col_ft', true);
+		}else{
+			$list->parse ('stories_col', 'col', true);
+		}
         $i++;
     }
 
