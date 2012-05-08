@@ -227,10 +227,18 @@ function fncEdit(
     //sid
     $templates->set_var('lang_sid', $LANG_ASSIST_ADMIN['sid']);
     $templates->set_var('sid', $sid);
-    $where ="tid=\"".$tid."\"";
-
-    $optionlist_sid= "<option value=''>{$LANG_ASSIST_ADMIN['select_sid']}</option>".LB;
-    $optionlist_sid.=COM_optionList ($_TABLES['stories'], 'sid,title,date*-1',$sid,2,$where);
+	
+	//FOR GL2.0.0 
+	if (COM_versionCompare(VERSION, "2.0.0",  '>=')){
+		$where ="s.sid = t.id AND t.tid=\"".$tid."\"";
+		$tables="{$_TABLES['stories']} AS s ,{$_TABLES['topic_assignments']} AS t";
+		$optionlist_sid= "<option value=''>{$LANG_ASSIST_ADMIN['select_sid']}</option>".LB;
+		$optionlist_sid.=COM_optionList ($tables , 's.sid,s.title,s.date*-1',$sid,2,$where);
+	}else{
+		$where ="tid=\"".$tid."\"";
+		$optionlist_sid= "<option value=''>{$LANG_ASSIST_ADMIN['select_sid']}</option>".LB;
+		$optionlist_sid.=COM_optionList ($_TABLES['stories'], 'sid,title,date*-1',$sid,2,$where);
+	}
 
     $templates->set_var ('optionlist_sid', $optionlist_sid);
 

@@ -451,16 +451,27 @@ function phpblock_shownewstories(
 	
     $sql.=" , UNIX_TIMESTAMP(s.date) AS day".LB;
     $sql.=" , t.topic".LB;
-    $sql.=" , s.tid".LB;
+    $sql.=" , t.tid".LB;
     $sql.=" , s.sid".LB;
 
 	$sql.=" FROM ".LB;
     $sql.=" {$_TABLES['stories']} AS s".LB;
     $sql.=" ,{$_TABLES['topics']} AS t".LB;
-
-    $sql.=" WHERE".LB;
-    $sql.="  s.tid = t.tid".LB;
-    $sql.=" AND t.archive_flag=0 ".LB;
+	//FOR GL2.0.0 
+	if (COM_versionCompare(VERSION, "2.0.0",  '>=')){
+		$sql.=" ,{$_TABLES['topic_assignments']} AS t2".LB;
+	}
+	
+	$sql.=" WHERE".LB;
+	//FOR GL2.0.0 
+	if (COM_versionCompare(VERSION, "2.0.0",  '>=')){
+		$sql.="  s.sid = t2.id".LB;
+		$sql.="  AND t2.tid = t.tid".LB;
+	}else{
+		$sql.="  s.tid = t.tid".LB;
+	}
+	
+	$sql.=" AND t.archive_flag=0 ".LB;
     $sql.=" AND s.draft_flag=0 ".LB;
     $sql.=" AND date <= NOW() ".LB;
 
@@ -469,8 +480,9 @@ function phpblock_shownewstories(
     }
 
     if ($topics!=="'ALL'" ){
-        $sql.=" AND s.tid IN ($topics)".LB;
-    }
+        $sql.=" AND t.tid IN ($topics)".LB;
+	}
+	
     $sql .= COM_getTopicSql ('AND', 0, 's');
     $sql .= COM_getPermSql ('AND', 0, 2, 's' );
     $sql .= COM_getLangSQL ('sid', 'AND');
