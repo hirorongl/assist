@@ -483,7 +483,7 @@ function phpblock_shownewstories(
         $sql.=" AND t.tid IN ($topics)".LB;
 	}
 	
-    $sql .= COM_getTopicSql ('AND', 0, 's');
+    $sql .= COM_getTopicSql ('AND', 0, 't');
     $sql .= COM_getPermSql ('AND', 0, 2, 's' );
     $sql .= COM_getLangSQL ('sid', 'AND');
 
