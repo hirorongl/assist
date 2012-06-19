@@ -371,19 +371,29 @@ function phpblock_shownewstories(
 
     if ($topics==""){
         $topics=$_ASSIST_CONF['topics'];
-        if ($topics==""){
-            $topics="'ALL'";
-        }
-    }elseif (strpos($topics,",")=="") {
-        $topics="'$topics'";
+	}elseif (strtoupper($topics)==="ALL"){
+        $topics="";
+    }elseif (strpos($topics,"|")=="") {
+		if (COM_versionCompare(VERSION, "2.0.0",  '>=')){
+			$topics = TOPIC_getChildList($topics);
+		}else{
+			$topics="'$topics'";
+		}
     }else{
-        $ary=explode(",",$topics);
-        $b="";
-        for ($i = 1; $i <= count($ary); $i++) {
-            $b.="'".current($ary)."',";
-            next($ary);
-        }
-        $topics=rtrim($b,",");
+		$ary=explode("|",$topics);
+		$topics="";
+		foreach( $ary as $val ){
+			if ($topics<>""){
+				$topics.=",";
+			}
+			//FOR GL2.0.0 
+			if (COM_versionCompare(VERSION, "2.0.0",  '>=')){
+				$tid_list = TOPIC_getChildList($val);
+				$topics.=$tid_list;
+			}else{
+				$topics.="'$val'";
+			}
+		}
     }
 
     //
@@ -479,7 +489,7 @@ function phpblock_shownewstories(
         $sql.=" AND (date >= (date_sub(NOW(), INTERVAL $intervalday day)))".LB;
     }
 
-    if ($topics!=="'ALL'" ){
+    if ($topics!=="" ){
         $sql.=" AND t.tid IN ($topics)".LB;
 	}
 	
@@ -490,7 +500,6 @@ function phpblock_shownewstories(
     $sql.=" ORDER BY date DESC".LB;
 
     $sql.=" LIMIT $limitcnt".LB;
-
     $result = DB_query ($sql);
 
     $i=0;

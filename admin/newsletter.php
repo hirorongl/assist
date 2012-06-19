@@ -7,6 +7,7 @@
 // public_html/admin/plugins/asit/newsletter.php
 // 2010/12/24 tsuchitani AT ivywe DOT co DOT jp
 // 20111220 update ニュースレター疑似クーロン実行日の使用をやめた
+// 20120618 gl2.0.0  対応
 
 // Set this to true to get various debug messages from this script
 $_ASSIST_VERBOSE = false;
@@ -76,21 +77,6 @@ function fncEdit(
         $dt_hour= COM_applyFilter($_POST['datetime_hour'],true);
         $dt_minute= COM_applyFilter($_POST['datetime_minute'],true);
         $datetime_value = COM_convertDate2Timestamp($dt_year.'-'.$dt_month.'-'.$dt_day, $dt_hour.':'.$dt_minute.':00');
-		// hiroron end 2010/07/13
-
-		//@@@@ 20111220delete---->
-        //assist用擬似クーロン実行日
-        //@@@@ $last_schedule_month = COM_applyFilter ($_POST['last_schedule_month'],true);
-        //@@@@ $last_schedule_day = COM_applyFilter ($_POST['last_schedule_day'],true);
-        //@@@@ $last_schedule_year = COM_applyFilter ($_POST['last_schedule_year'],true);
-        //@@@@ $last_schedule_hour = COM_applyFilter ($_POST['last_schedule_hour'],true);
-        //@@@@ $last_schedule_minute = COM_applyFilter ($_POST['last_schedule_minute'],true);
-        //@@@@ $last_schedule=COM_convertDate2Timestamp(
-            //@@@@ $last_schedule_year."-".$last_schedule_month."-".$last_schedule_day
-            //@@@@ , $last_schedule_hour.":".$last_schedule_minute."::00"
-            //@@@@ );
-		//@@@@@ 20111220delete<-----
-
         // 冒頭文　本文 introbody
 		$introbody= COM_applyFilter($_POST['introbody'],true);
 		
@@ -129,15 +115,6 @@ function fncEdit(
        $uidto = COM_stripslashes($uidto);
 		// hiroron start 2010/07/13
        $datetime_value = DB_getItem( $_TABLES['vars'], 'value', "name = 'assist_re_datetime'" );
-		// hiroron end 2010/07/13
-		
-	   //@@@@@20111220 delete---->
-       //assist用擬似クーロン実行日
-       //@@@@@ $last_schedule = DB_getItem( $_TABLES['vars'], 'value', "name = 'assist_last_schedule'" );
-       //@@@@@ if ($last_schedule===""){
-       //@@@@@   $last_schedule=time();
-       //@@@@@}
-	   //@@@@@20111220 delete<----
 
        // 冒頭文　本文 introbody
        $introbody = DB_getItem( $_TABLES['vars'], 'value', "name = 'assist_introbody'" );
@@ -188,16 +165,6 @@ function fncEdit(
                     , $logfile);
     }
 	
-	//@@@@@20111220delete---->
-    //if  ($_ASSIST_CONF['cron_schedule_interval']==0){
-    //    $w.=$LANG_ASSIST_ADMIN['mail_cron_off'];
-	//}else{
-	//	$wmin=$_ASSIST_CONF['cron_schedule_interval'] / 60;
-    //    $w.= sprintf ($LANG_ASSIST_ADMIN['mail_cron_on']
-    //                , $_ASSIST_CONF['cron_schedule_interval'],$wmin );
-    //}
-	//@@@@@20111220delete<----
-
     $tid=$_ASSIST_CONF['newsletter_tid'];
     $topicname = DB_getItem ($_TABLES['topics'], 'topic',"tid = '$tid'");
     IF ($topicname==""){
@@ -230,10 +197,17 @@ function fncEdit(
 	
 	//FOR GL2.0.0 
 	if (COM_versionCompare(VERSION, "2.0.0",  '>=')){
-		$where ="s.sid = t.id AND t.tid=\"".$tid."\"";
-		$tables="{$_TABLES['stories']} AS s ,{$_TABLES['topic_assignments']} AS t";
+		//$where ="s.sid = t.id AND t.tid=\"".$tid."\"";
+		//$tables="{$_TABLES['stories']} AS s ,{$_TABLES['topic_assignments']} AS ta";
+		$topics = TOPIC_getChildList($tid);
+		
+		$where ="s.sid = ta.id ";
+		$where .=" AND ta.tid IN ($topics)";
+		$tables="{$_TABLES['stories']} AS s ";
+		$tables.=" ,{$_TABLES['topic_assignments']} AS ta";
+		
 		$optionlist_sid= "<option value=''>{$LANG_ASSIST_ADMIN['select_sid']}</option>".LB;
-		$optionlist_sid.=COM_optionList ($tables , 's.sid,s.title,s.date*-1',$sid,2,$where);
+		$optionlist_sid.=COM_optionList ($tables , 'distinct s.sid,s.title,s.date*-1',$sid,2,$where);
 	}else{
 		$where ="tid=\"".$tid."\"";
 		$optionlist_sid= "<option value=''>{$LANG_ASSIST_ADMIN['select_sid']}</option>".LB;
@@ -242,21 +216,10 @@ function fncEdit(
 
     $templates->set_var ('optionlist_sid', $optionlist_sid);
 
-	//@@@@@20111220delete---->
-    // assist用擬似クーロン実行日(assist_last_schedule)
-    //@@@@@$templates->set_var('lang_last_schedule', $LANG_ASSIST_ADMIN['last_schedule']);
-    //@@@@@$datetime_last_schedule=LIB_datetimeedit($last_schedule,"LANG_ASSIST_ADMIN","last_schedule");
-    //@@@@@$templates->set_var( 'datetime_last_schedule', $datetime_last_schedule);
-	//@@@@@20111220delete<----
-
-
-
-
     // 冒頭文　本文 introbody
     $templates->set_var('lang_introbody', $LANG_ASSIST_ADMIN['introbody']);
     $list_introbody=assist_getradiolist ($LANG_ASSIST_INTROBODY,"introbody",$introbody);
     $templates->set_var( 'list_introbody', $list_introbody);
-	
 	
 	//送信先環境
     $templates->set_var('lang_toenv', $LANG_ASSIST_ADMIN['toenv']);
@@ -442,20 +405,6 @@ function fncSave ($mode)
     $uidto=COM_applyFilter($_POST['uidto'],true);
     $uidto=addslashes (COM_checkHTML (COM_checkWords ($uidto)));
 
-	
-	//@@@@@20111220delete---->
-    //assist用擬似クーロン実行日
-    //@@@@@$last_schedule_month = COM_applyFilter ($_POST['last_schedule_month'],true);
-    //@@@@@$last_schedule_day = COM_applyFilter ($_POST['last_schedule_day'],true);
-    //@@@@@$last_schedule_year = COM_applyFilter ($_POST['last_schedule_year'],true);
-    //@@@@@$last_schedule_hour = COM_applyFilter ($_POST['last_schedule_hour'],true);
-    //@@@@@$last_schedule_minute = COM_applyFilter ($_POST['last_schedule_minute'],true);
-    //@@@@@$last_schedule=COM_convertDate2Timestamp(
-    //@@@@@        $last_schedule_year."-".$last_schedule_month."-".$last_schedule_day
-    //@@@@@        , $last_schedule_hour.":".$last_schedule_minute."::00"
-    //@@@@@        );
-	//@@@@@20111220delete<----
-	
 	// 冒頭文　本文 introbody
     $introbody=COM_applyFilter($_POST['introbody'],true);
     $introbody=addslashes (COM_checkHTML (COM_checkWords ($introbody)));
@@ -528,10 +477,6 @@ function fncSave ($mode)
     $fields="name";
     $fields.=",value";
 	//
-	//??// hiroron start 2010/07/13
-	//??//    $values="'assist_fromname'";
-    //??$values="'assist_fromname$reserv_datetime'";
-	//??// hiroron end 2010/07/13
 	for ($i=0; $i < count( $fary ); $i++) {
 		$fname=$fary[$i]['name'];
 		$values="'assist_{$fname}'";
@@ -602,8 +547,6 @@ function fncsendmail (
     //$logfile = $_CONF['path_log'] . 'wkymlmguser.log';
     $logfile = $_CONF['path_log'] . 'assist_newsletter.log';
 
-//email
-
     $retval = '';
 
     $fromname = DB_getItem( $_TABLES['vars'], 'value', "name = 'assist_fromname'" );
@@ -628,13 +571,6 @@ function fncsendmail (
     $selectgroup = DB_getItem( $_TABLES['vars'], 'value', "name = 'assist_selectgroup'" );
 	$selectgroup = COM_stripslashes($selectgroup);
 		
-
-	//一括予約
-    //$bulkmm = DB_getItem( $_TABLES['vars'], 'value', "name = 'assist_bulkmm'" );
-    //$bulkmm = COM_stripslashes($bulkmm);
-    //$bulkcnt = DB_getItem( $_TABLES['vars'], 'value', "name = 'assist_bulkcnt'" );
-    //$bulkcnt = COM_stripslashes($bulkcnt);
-
     // 冒頭文　本文 introbody
     $introbody = DB_getItem( $_TABLES['vars'], 'value', "name = 'assist_introbody'" );
     $introbody = COM_stripslashes($introbody);
@@ -724,7 +660,6 @@ function fncsendmail (
 
         $sql.=" order by uid ".LB;
 
-//echo "sql=".$sql."<br>";//@@@@@
         $result = DB_query($sql);
         if ($result !== false) {
             $result = DB_query($sql);
@@ -796,9 +731,6 @@ function fncListReserv ()
 			$header_arr[]=array('text' => $LANG_ASSIST_ADMIN['selectgroup'], 'field' => 'selectgroup');
             $header_arr[]=array('text' => $LANG_ASSIST_ADMIN['reservlist_sid'], 'field' => 'sid');
             $header_arr[]=array('text' => $LANG_ASSIST_ADMIN['reservlist_cancel'], 'field' => 'reservcancel');
-			
-			
-			
 			
 			//
 			$text_arr = array('has_menu' =>  false, 'title' => $LANG_ASSIST_ADMIN['reservlist_title']);

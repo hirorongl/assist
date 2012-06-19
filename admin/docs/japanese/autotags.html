@@ -21,7 +21,7 @@
 <h1><a href="index.html">Assist プラグイン</h1>
 
 
-<h2><a name="autotags">自動タグ</a>(2012/02/15 update)</h2>
+<h2><a name="autotags">自動タグ</a>(2012/06/18 update)</h2>
 <table>
 <tr><th style="width:25%">書式</th>
     <th style="width:75%">説明</th>
@@ -30,8 +30,11 @@
 <tr>
 <td>[newstories:話題ID RSSファイル]</td>
 <td>
-新着記事（おしらせ）</br>
-例:[newstories:news news.rss]
+新着記事（おしらせ）<br />
+例1:[newstories:news news.rss]<br />
+例2:[newstories:]話題指定省略時はコンフィギュレーション設定値、設定値がない場合はALL<br />
+例3:[newstories:ALL]全話題<br />
+例4:[newstories:news|General] 話題の複数指定<br />
 </td>
 </tr>
 
@@ -42,6 +45,8 @@
 例1:[newstories2:news rss_file:news.rss title_trim_length:50 intervalday:70 limitcnt:40 newmarkday:30 thtml:xxxx]<br />
 例2:話題news を全件表示  [newstories2:news intervalday:0]<br />
 例3:話題news を/テーマ/xxxx/ のテンプレートで表示  [newstories2:news thtml:xxxx]<br />
+例4:[newstories2:ALL]全話題<br />
+例5:[newstories2:news|General] 話題の複数指定<br />
 </td>
 </tr>
 <tr>
@@ -65,10 +70,10 @@
 <tr class="r2">
 <td>[assist:staticpage_content]</td>
 <td>
-[assist:staticpage_content]id=blockpageの静的ページを無条件に表示する<br />
-[assist:staticpage_content id:xxxx urlkey:yyyy]urlにyyyyを含む場合にidがxxxx の静的ページを表示する<br />
-[assist:staticpage_content id:xxxx mode:home]ホームの場合にidがxxxx の静的ページを表示する<br />
-[assist:staticpage_content id:xxxx mode:sub]ホーム以外の場合にidがxxxx の静的ページを表示する<br />
+例1:[assist:staticpage_content] id=blockpageの静的ページを無条件に表示する<br />
+例2:[assist:staticpage_content id:xxxx urlkey:yyyy] urlにyyyyを含む場合にidがxxxx の静的ページを表示する<br />
+例3:[assist:staticpage_content id:xxxx mode:home] ホームの場合にidがxxxx の静的ページを表示する<br />
+例4:[assist:staticpage_content id:xxxx mode:sub] ホーム以外の場合にidがxxxx の静的ページを表示する<br />
 指定された静的ページを表示する権限のないユーザがアクセスしている場合は表示されません<br />
 modeが指定されている場合　urlkeyの指定は無視されます<br />
 idが指定されていない場合は、blockpage が指定されたものとします
@@ -158,10 +163,12 @@ idが指定されていない場合は、blockpage が指定されたものと�
 <td>[assit:newstories  話題ID RSSファイルほか例1参照]</td>
 <td>
 新着記事（おしらせ）<br />
-[assist:newstories]<br />
-例1:[assist:newstories topics:news rss_file:news.rss title_trim_length:50 intervalday:70 limitcnt:40 newmarkday:30 thtml:xxxx]<br />
-例2:話題news を全件表示  [assit:newstories topics:news intervalday:0]<br />
-例3:話題news を/テーマ/xxxx/ のテンプレートで表示  [assist:newstories topics:news thtml:xxxx]<br />
+例1:[assist:newstories]<br />
+例2:[assist:newstories topics:news rss_file:news.rss title_trim_length:50 intervalday:70 limitcnt:40 newmarkday:30 thtml:xxxx]<br />
+例3:話題news を全件表示  [assit:newstories topics:news intervalday:0]<br />
+例4:話題news を/テーマ/xxxx/ のテンプレートで表示  [assist:newstories topics:news thtml:xxxx]<br />
+例5:[assist:ALL]　全話題<br />
+例6:[assist:newstories topics:news|General]　話題の複数指定<br />
 </td>
 </tr>
 
@@ -189,6 +196,7 @@ member または guest （言語ファイルで変更可）
 [assit:topic_id]
 </td>
 <td>
+現在の画面の話題ID
 </td>
 </tr>
 
@@ -197,6 +205,7 @@ member または guest （言語ファイルで変更可）
 [assit:sp_id]
 </td>
 <td>
+現在の画面の静的ページID
 </td>
 </tr>
 
@@ -247,6 +256,10 @@ rss の表示<br />
 <tr>
   <td>phpblock_shownewstories</td>
   <td>&nbsp;</td>
+</tr>
+<tr>
+  <td>phpblock_shownewstories_news</td>
+  <td>話題id=newsの新着記事の一覧を表示する</td>
 </tr>
 <tr class="r2">
   <td>phpblock_showstaticpage</td>
