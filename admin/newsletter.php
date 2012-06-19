@@ -202,7 +202,12 @@ function fncEdit(
 		$topics = TOPIC_getChildList($tid);
 		
 		$where ="s.sid = ta.id ";
-		$where .=" AND ta.tid IN ($topics)";
+		if  ($topics==""){
+			$where .=" AND tid=\"".$tid."\"";;
+		}else{
+			$where .=" AND ta.tid IN ($topics)";
+		}
+		
 		$tables="{$_TABLES['stories']} AS s ";
 		$tables.=" ,{$_TABLES['topic_assignments']} AS ta";
 		
