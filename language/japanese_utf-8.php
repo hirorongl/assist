@@ -2,7 +2,7 @@
 ###############################################################################
 # plugins/assist/language/japanese_utf-8.php
 # もし万一エンコードの種類が　UTF-8でない場合は、utf-8に変換してください。
-# Last Update 20120409
+# Last Update 20120625
 ###############################################################################
 ## 管理画面
 $LANG_ASSIST_admin_menu = array();
@@ -258,7 +258,7 @@ $LANG_ASSIST_ADMIN['err_map'] = 'マップがありません'.LB;
 
 //
 $LANG_ASSIST_ADMIN['mail_save_ok'] = '保存しました';
-$LANG_ASSIST_ADMIN['mail_test_message'] = 'これはテストです';
+$LANG_ASSIST_ADMIN['mail_test_message'] = 'これはテスト配信です。配信内容を確認してください。';
 $LANG_ASSIST_ADMIN['mail_test_ok'] = 'テスト送信しました　';
 $LANG_ASSIST_ADMIN['mail_test_ng'] = 'テスト送信できませんでした　';
 $LANG_ASSIST_ADMIN['mail_send_success'] = '送信成功　';
