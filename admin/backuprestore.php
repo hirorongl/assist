@@ -102,7 +102,6 @@ if ($action=="" ) {
 }
 
 
-
 $display='';
 $menuno=5;
 $information = array();
@@ -136,7 +135,7 @@ switch ($action) {
         break;
     default:
 }
-
+$display.=fncDisply($pi_name);
 //FOR GL2.0.0 
 if (COM_versionCompare(VERSION, "2.0.0",  '>=')){
 	$display = COM_createHTMLDocument($display,$information);
@@ -144,6 +143,7 @@ if (COM_versionCompare(VERSION, "2.0.0",  '>=')){
 	$display = COM_siteHeader ($information['what'], $information['pagetitle']).$display;
 	$display .= COM_siteFooter($information['rightblock']);
 }
+COM_output($display);
 
 
 ?>
