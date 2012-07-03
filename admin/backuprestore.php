@@ -105,8 +105,11 @@ if ($action=="" ) {
 
 $display='';
 $menuno=5;
-$page_title=$LANG_ASSIST_ADMIN['piname']."backup and restore";
-$display.=COM_siteHeader ('menu', $page_title);
+$information = array();
+$information['what']='menu';
+$information['rightblock']=false;
+$information['pagetitle']=$LANG_ASSIST_ADMIN['piname']."backup and restore";
+
 $display.=ppNavbarjp($navbarMenu,$LANG_ASSIST_admin_menu[$menuno]);
 if (isset ($_REQUEST['msg'])) {
     $display .= COM_showMessage (COM_applyFilter ($_REQUEST['msg'],
@@ -134,10 +137,13 @@ switch ($action) {
     default:
 }
 
-$display.=fncDisply($pi_name);
-$display.= COM_siteFooter();
-
-COM_output($display);
+//FOR GL2.0.0 
+if (COM_versionCompare(VERSION, "2.0.0",  '>=')){
+	$display = COM_createHTMLDocument($display,$information);
+}else{
+	$display = COM_siteHeader ($information['what'], $information['pagetitle']).$display;
+	$display .= COM_siteFooter($information['rightblock']);
+}
 
 
 ?>

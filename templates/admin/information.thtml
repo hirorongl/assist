@@ -1,4 +1,4 @@
-<!-- plugins/assist/templates/admin/information.thtml 20111021{ -->
+<!-- plugins/assist/templates/admin/information.thtml 20120702{ -->
 
 <h2>{piname}</h2>
 <h3>information</h3>
@@ -9,9 +9,10 @@
 <a href="{document_url}assist.html" target="_blank">{lang_configuration}</a>
 :<a href="{document_url}autotags.html" target="_blank">{lang_autotags}</a>
 )</p>
+
 <form name='assist_conf_link' action='{site_admin_url}/configuration.php' method='POST'>
 <input type='hidden' name='conf_group' value='assist'></form>
-<p> <a style='text-decoration: none;' href='#' onclick="document.assist_conf_link.submit()">{lang_configuration}</a></p></div>
+<p> <a style='text-decoration: none;' href='#' onclick="document.assist_conf_link.submit()">{lang_configuration}</a></p>
 
 
 <!-- } plugins/assist/templates/admin/information.thtml -->

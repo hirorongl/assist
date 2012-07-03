@@ -7,6 +7,7 @@
 // $Id: vars.php
 // public_html/admin/plugins/assist/vars.php
 // 2009/12/09 tsuchitani AT ivywe DOT co DOT jp
+// 20120702
 
 // Set this to true to get various debug messages from this script
 $_ASSIST_VERBOSE = false;
@@ -14,32 +15,33 @@ $_ASSIST_VERBOSE = false;
 define ('THIS_SCRIPT', 'vars.php');
 //define ('THIS_SCRIPT', 'test.php');
 
-
 include_once('assist_functions.php');
 
 //
-function fncdatetimeedit($datetime_value,$title,$token,$script="",$datetime="datetime") {
+function fncdatetimeedit(
+	$datetime_value
+	,$title
+	,$token
+	,$script=""
+	,$datetime="datetime"
+) {
     global $_CONF;
     global $LANG_CONFIG ;
-
 
     $pi_name="assist";
     $tmplfld=assist_templatePath('admin','default',$pi_name);
     $tmpl = new Template($tmplfld);
 
     $tmpl->set_file(array('datetimeedit' => 'datetime.thtml'));
-    //
 
     $datetime_month = date('m', $datetime_value);
     $datetime_day = date('d', $datetime_value);
     $datetime_year = date('Y', $datetime_value);
-    //
     $datetime_hour = date ('H', $datetime_value);
     $datetime_minute = date ('i', $datetime_value) ;
 
     //
     $month_options = COM_getMonthFormOptions ($datetime_month);
-
     $day_options = COM_getDayFormOptions ($datetime_day);
     $year_options = COM_getYearFormOptions ($datetime_year);
     $hour_options = COM_getHourFormOptions ($datetime_hour, 24);
@@ -91,9 +93,6 @@ function fncMenu()
 
     $retval = '';
 
-//    $retval .= COM_startBlock ("", '',
-//                            COM_getBlockTemplate ('_admin_block', 'header'));
-
     //擬似クーロン実行日
     $datetime = DB_getItem( $_TABLES['vars'], 'value', "name = 'last_scheduled_run'" );
 
@@ -114,8 +113,6 @@ function fncMenu()
         );
 
     $retval .= $last_scheduled_run;
-
-    $retval .= COM_endBlock(COM_getBlockTemplate('_admin_block', 'footer'));
 
     return $retval;
 }
@@ -141,7 +138,6 @@ function fncdatetime ()
         $datetime_year."-".$datetime_month."-".$datetime_day
         , $datetime_hour.":".$datetime_minute."::00"
         );
-//echo "w=".$w."<br>";
     DB_query( "UPDATE {$_TABLES['vars']} SET value = '$w' WHERE name = 'last_scheduled_run'" );
 
     return;
@@ -174,34 +170,23 @@ if ($mode=="datetime") {
 //
 $menuno=3;
 $display = '';
+$display.=ppNavbarjp($navbarMenu,$LANG_ASSIST_admin_menu[$menuno]);
 
+$information = array();
+$information['what']='menu';
+$information['rightblock']=false;
+$information['pagetitle']=$LANG_ASSIST_ADMIN['piname'];
 
+$display .= fncMenu();
 
-switch ($mode) {
-    case 'datetime':// 擬似クーロン実施日
-        $page_title=$LANG_ASSIST_ADMIN['piname'].$LANG_ASSIST_ADMIN['import'];
-        $display .= COM_siteHeader('menu', $page_title);
-        $display.=ppNavbarjp($navbarMenu,$LANG_ASSIST_admin_menu[$menuno]);
-        $display .= fncMenu();
-        $display .= fncdatetime();
-        break;
-
-    default:// 初期表示、一覧表示
-
-        $page_title=$LANG_ASSIST_ADMIN['piname'];
-        $display .= COM_siteHeader ('menu', $page_title);
-        //$display .= COM_siteHeader ('none', $page_title);
-        $display.=ppNavbarjp($navbarMenu,$LANG_ASSIST_admin_menu[$menuno]);
-        $display .= fncMenu();
-        break;
-
+//FOR GL2.0.0 
+if (COM_versionCompare(VERSION, "2.0.0",  '>=')){
+	$display = COM_createHTMLDocument($display,$information);
+}else{
+	$display = COM_siteHeader ($information['what'], $information['pagetitle']).$display;
+	$display .= COM_siteFooter($information['rightblock']);
 }
 
-$_CONF['show_right_blocks']=0;
-$_CONF['left_blocks_in_footer']=0;
-$display .= COM_siteFooter(false);
-
-//
-echo $display;
+COM_output($display);
 
 ?>

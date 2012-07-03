@@ -897,25 +897,23 @@ if (in_array("wkymlmguser", $_PLUGINS)){
 
 $menuno=4;
 $display = '';
+$display .=ppNavbarjp($navbarMenu,$LANG_ASSIST_admin_menu[$menuno]);
+
+$information = array();
+$information['what']='menu';
+$information['rightblock']=false;
+$information['pagetitle']=$LANG_ASSIST_ADMIN['piname'];
+
 switch ($mode) {
     case 'save':// 保存
         $message = fncSave ($edt_flg);
-
-        $page_title=$LANG_ASSIST_ADMIN['piname'].$LANG_ASSIST_ADMIN['edit'];
-        $display .= COM_siteHeader('menu', $page_title);
-        $display .=ppNavbarjp($navbarMenu,$LANG_ASSIST_admin_menu[$menuno]);
         $display .= fncEdit($message,$wkymlmguserflg);
         break;
-
-
     case 'send':// 送信
         $message .= fncSave ($mode);
         if ($message===$LANG_ASSIST_ADMIN['mail_save_ok']) {
             $message= fncsendmail("send",$uidfrom,$uidto,$wkymlmguserflg);
         }
-        $page_title=$LANG_ASSIST_ADMIN['piname'].$LANG_ASSIST_ADMIN['edit'];
-        $display .= COM_siteHeader('menu', $page_title);
-        $display .=ppNavbarjp($navbarMenu,$LANG_ASSIST_admin_menu[$menuno]);
         $display .= fncEdit($message,$wkymlmguserflg);
         break;
     case 'test':// test送信
@@ -923,17 +921,11 @@ switch ($mode) {
         if ($message===$LANG_ASSIST_ADMIN['mail_save_ok']) {
             $message= fncsendmail("test");
         }
-        $page_title=$LANG_ASSIST_ADMIN['piname'].$LANG_ASSIST_ADMIN['edit'];
-        $display .= COM_siteHeader('menu', $page_title);
-        $display .=ppNavbarjp($navbarMenu,$LANG_ASSIST_admin_menu[$menuno]);
         $display .= fncEdit($message,$wkymlmguserflg);
         break;
 // hiroron start 2010/07/13
     case 'reserv': // 送信予約
         $message .= fncSave ($mode);
-        $page_title=$LANG_ASSIST_ADMIN['piname'].$LANG_ASSIST_ADMIN['edit'];
-        $display .= COM_siteHeader('menu', $page_title);
-        $display .=ppNavbarjp($navbarMenu,$LANG_ASSIST_admin_menu[$menuno]);
         $display .= fncEdit($message,$wkymlmguserflg);
         break;
 // hiroron end 2010/07/13
@@ -944,16 +936,17 @@ switch ($mode) {
 
     default:// 初期表示、一覧表示
         $page_title=$LANG_ASSIST_ADMIN['piname'];
-        $display .= COM_siteHeader ('menu', $page_title);
-        //$display .= COM_siteHeader ('none', $page_title);
-        @$display.=ppNavbarjp($navbarMenu,$LANG_ASSIST_admin_menu[$menuno]);
-                //$display .= fncMenu($message);
         $display.=fncEdit("",$wkymlmguserflg);
 }
 
+//FOR GL2.0.0 
+if (COM_versionCompare(VERSION, "2.0.0",  '>=')){
+	$display = COM_createHTMLDocument($display,$information);
+}else{
+	$display = COM_siteHeader ($information['what'], $information['pagetitle']).$display;
+	$display .= COM_siteFooter($information['rightblock']);
+}
 
-    $display .= COM_siteFooter ();
-
-echo $display;
+COM_output($display);
 
 ?>

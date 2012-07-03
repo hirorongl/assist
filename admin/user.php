@@ -678,30 +678,29 @@ if ($mode=="" OR $mode=="importform" OR $mode=="deleteform") {
 //
 $menuno=2;
 $display = '';
+$display.=ppNavbarjp($navbarMenu,$LANG_ASSIST_admin_menu[$menuno]);
+
+$information = array();
+$information['what']='menu';
+$information['rightblock']=false;
 
 
 
 //echo "mode=".$mode."<br>";
 switch ($mode) {
     case 'import':// インポート実行
-        $page_title=$LANG_ASSIST_ADMIN['piname'].$LANG_ASSIST_ADMIN['import'];
-        $display .= COM_siteHeader('menu', $page_title);
-        $display.=ppNavbarjp($navbarMenu,$LANG_ASSIST_admin_menu[$menuno]);
+		$information['pagetitle']=$LANG_ASSIST_ADMIN['piname'].$LANG_ASSIST_ADMIN['import'];
         $display .= fncMenu();
         $display .= fncimportexec();
         break;
     case 'delete':// デリート実行
-        $page_title=$LANG_ASSIST_ADMIN['piname'].$LANG_ASSIST_ADMIN['delete'];
-        $display .= COM_siteHeader('menu', $page_title);
-        $display.=ppNavbarjp($navbarMenu,$LANG_ASSIST_admin_menu[$menuno]);
+		$information['pagetitle']=$LANG_ASSIST_ADMIN['piname'].$LANG_ASSIST_ADMIN['delete'];
         $display .= fncMenu();
         $display .= fncdeleteexec();
         break;
     //
     case 'importform':// インポートフォーム表示
-        $page_title=$LANG_ASSIST_ADMIN['piname'].$LANG_ASSIST_ADMIN['import'];
-        $display .= COM_siteHeader('menu', $page_title);
-        $display.=ppNavbarjp($navbarMenu,$LANG_ASSIST_admin_menu[$menuno]);
+        $information['pagetitle']=$LANG_ASSIST_ADMIN['piname'].$LANG_ASSIST_ADMIN['import'];
         $display .= fncMenu();
         //メッセージ表示
         if (!empty ($msg)) {
@@ -713,9 +712,7 @@ switch ($mode) {
         $display .= fncimport();
         break;
     case 'deleteform':// デリートフォーム表示
-        $page_title=$LANG_ASSIST_ADMIN['piname'].$LANG_ASSIST_ADMIN['delete'];
-        $display .= COM_siteHeader('menu', $page_title);
-        $display.=ppNavbarjp($navbarMenu,$LANG_ASSIST_admin_menu[$menuno]);
+        $information['pagetitle']=$LANG_ASSIST_ADMIN['piname'].$LANG_ASSIST_ADMIN['delete'];
         //メッセージ表示
         if (!empty ($msg)) {
             $display.= COM_startBlock ($LANG_ASSIST_ADMIN['err'], '',
@@ -729,22 +726,21 @@ switch ($mode) {
 
     default:// 初期表示、一覧表示
 
-        $page_title=$LANG_ASSIST_ADMIN['piname'];
-        $display .= COM_siteHeader ('menu', $page_title);
-        //$display .= COM_siteHeader ('none', $page_title);
-        $display.=ppNavbarjp($navbarMenu,$LANG_ASSIST_admin_menu[$menuno]);
+        $information['pagetitle']=$LANG_ASSIST_ADMIN['piname'];
         $display .= fncMenu();
         $display.=fncList();
         break;
 
 }
 
-//$display .= COM_siteFooter();
-$_CONF['show_right_blocks']=0;
-$_CONF['left_blocks_in_footer']=0;
-$display .= COM_siteFooter(false);
+//FOR GL2.0.0 
+if (COM_versionCompare(VERSION, "2.0.0",  '>=')){
+	$display = COM_createHTMLDocument($display,$information);
+}else{
+	$display = COM_siteHeader ($information['what'], $information['pagetitle']).$display;
+	$display .= COM_siteFooter($information['rightblock']);
+}
 
-//
-echo $display;
+COM_output($display);
 
 ?>
