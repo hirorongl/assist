@@ -581,15 +581,17 @@ function phpblock_showstaticpage(
 // | 書式 phpblock_showstaticpage($id,"yyyy")
 // | 書式 phpblock_showstaticpage($id,"","home")
 // | 書式 phpblock_showstaticpage($id,"","sub")
+// | 書式 phpblock_showstaticpage($id,"yyyy","except")
 // +---------------------------------------------------------------------------+
 // | 引数 $id         :静的ページID
 // | 引数 $urlkey     :URLにkeywordが含まれた場合に表示する
 // |                   省略時は、無条件
-// | 引数 $mode       :home,sub それ以外はall
+// |                   mode=except の時は、キーワードを含まないサブページの場合
+// | 引数 $mode       :home,sub,except それ以外はall
 // +---------------------------------------------------------------------------+
 // | 戻値 nomal:静的ページの内容                                               |
 // +---------------------------------------------------------------------------+
-// 2011/11/14
+// 20120818
 {
 	global $_CONF;
 
@@ -607,6 +609,18 @@ function phpblock_showstaticpage(
 	}elseif ($mode=="SUB"){
 		if  (!COM_onFrontpage()){
 			$retval .= assist_returnStaticpage( $id ,"autotag");
+		}
+	}elseif ($mode=="EXCEPT"){
+		if  (COM_onFrontpage()){
+		}else{
+			if ($urlkey==""){
+				$retval .= assist_returnStaticpage( $id ,"autotag");
+			}else{
+				$pageurl = $_SERVER["REQUEST_URI"];
+				if( strpos($pageurl, $urlkey) == FALSE ){
+					$retval .= assist_returnStaticpage( $id ,"autotag");
+				}
+			}
 		}
 	}else{
 		if ($urlkey==""){
