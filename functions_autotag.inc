@@ -591,11 +591,22 @@ function phpblock_showstaticpage(
 // +---------------------------------------------------------------------------+
 // | 戻値 nomal:静的ページの内容                                               |
 // +---------------------------------------------------------------------------+
-// 20120818
+// 20121116
 {
 	global $_CONF;
 
     $retval ='';
+	
+	$pageurl ="";
+	if  ($_SERVER["REQUEST_URI"]<>""){
+		$pageurl = $_SERVER["REQUEST_URI"];
+	}else{
+		if  ($_SERVER['argc']>1){
+			for ($i = 1; $i < count($_SERVER['argv']); $i++) {
+				$pageurl .= $_SERVER['argv'][$i]." ";
+			}
+		}
+	}
 
     if ($id==""){
          $id="blockpage";
@@ -616,7 +627,6 @@ function phpblock_showstaticpage(
 			if ($urlkey==""){
 				$retval .= assist_returnStaticpage( $id ,"autotag");
 			}else{
-				$pageurl = $_SERVER["REQUEST_URI"];
 				if( strpos($pageurl, $urlkey) == FALSE ){
 					$retval .= assist_returnStaticpage( $id ,"autotag");
 				}
@@ -626,7 +636,6 @@ function phpblock_showstaticpage(
 		if ($urlkey==""){
 			$retval .= assist_returnStaticpage( $id ,"autotag");
 		}else{
-			$pageurl = $_SERVER["REQUEST_URI"];
 			if( strpos($pageurl, $urlkey) !== FALSE ){
 				$retval .= assist_returnStaticpage( $id ,"autotag");
 			}
