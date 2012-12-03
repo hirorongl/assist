@@ -232,6 +232,12 @@ function plugin_autotags_assist (
                             ,$p['endchars']
                         );
                         break;
+                    case 'cache' :
+                        $rt= assist_cache(
+                            $p['id']
+                            ,$p['type']
+                        );
+                        break;
 
                 }
 
@@ -1300,5 +1306,21 @@ function assist_truncate(
 	}
     return $rt;
 }
-
+function assist_cache(
+	$id =''
+	, $type ='staticpages'
+)
+{
+	global $_ASSIST_CONF;
+	
+	$ret="";
+	if  ($type==""){
+		$type="staticpages";
+	}
+	$path=$_ASSIST_CONF["path_cache"].$type."/".$id.".html";
+	if  (file_exists($path)){
+		$ret = @file_get_contents($path);
+	}
+	return $ret;
+}
 ?>

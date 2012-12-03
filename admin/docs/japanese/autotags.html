@@ -21,7 +21,7 @@
 <h1><a href="index.html">Assist プラグイン</h1>
 
 
-<h2><a name="autotags">自動タグ</a>(2012/12/16 update)</h2>
+<h2><a name="autotags">自動タグ</a>(2012/12/03 update)</h2>
 <table>
 <tr><th style="width:25%">書式</th>
     <th style="width:75%">説明</th>
@@ -241,9 +241,21 @@ rss の表示<br />
 </td>
 <td>
 文字列を区切る<br />
-例１；[assist:truncate text:あいうえおかきくけこ maxlen:3]<br>
-例２；[assist:truncate text:あいうえおかきくけこ maxlen:3 filler:...]<br>
+例１；[assist:truncate text:あいうえおかきくけこ maxlen:3]<br />
+例２；[assist:truncate text:あいうえおかきくけこ maxlen:3 filler:...]<br />
 例３；[assist:truncate text:あいうえおかきくけこ maxlen:1 filler:... endchars:3]</td>
+</tr>
+
+<tr >
+<td>
+[assist:cache id:top type:staticpages]
+</td>
+<td><a name="desc_cache"></a>
+キャッシュファイルを返す<br />
+例１；[assist:cache id:top]<br />
+例２；[assist:cache id:top type:staticpages]<br />
+キャッシュファイルは、<a title="Assistプラグインのコンフィギュレーション設定" class="note_super" href="assist.html#desc_path_cache">キャッシュパス</a>/<a title="例１例２の場合staticpages" class="note_super" href="#desc_cache">type</a>/<a title="例１例２の場合top" class="note_super" href="#path_cache">id</a>.html <br />
+キャッシュファイルが存在しない場合は、空白を返します<br />
 </tr>
 
 </tbody>
