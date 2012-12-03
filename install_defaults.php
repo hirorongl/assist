@@ -37,7 +37,7 @@
 // +---------------------------------------------------------------------------+
 //
 // $Id: install_defaults.php
-// Last Update 20120201
+// Last Update 20121203
 
 if (strpos($_SERVER['PHP_SELF'], 'install_defaults.php') !== false) {
     die('This file can not be used on its own!');
@@ -98,6 +98,9 @@ $_ASSIST_DEFAULT['xmlns'] =
 
 //デフォルト画像URL
 $_ASSIST_DEFAULT['default_img_url'] = "";
+
+//キャッシュファイルパス
+$_ASSIST_DEFAULT['path_cache'] = $_CONF['path']."data/cache/";
 
 
 //() autotag permissions
@@ -266,8 +269,15 @@ function plugin_initconfig_assist()
 		
 		$c->add(
             'default_img_url'
-            ,$_DATABOX_DEFAULT['default_img_url']
+            ,$_ASSIST_DEFAULT['default_img_url']
             ,'text', 0, 0, NULL, 260, TRUE
+			, $pi_name
+			,0);
+		
+		$c->add(
+            'path_cache'
+            ,$_ASSIST_DEFAULT['path_cache']
+            ,'text', 0, 0, NULL, 270, TRUE
 			, $pi_name
 			,0);
 
