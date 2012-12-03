@@ -5,7 +5,7 @@
 
 	$page=$argv[1];
 
-	//      ↓フォルダ位置が変わる場合は修正してください
+	//      ↓ディレクトリが変わる場合は修正してください
 	include('/path/to/geeklog/public_html/lib-common.php');
 	$path=$_ASSIST_CONF["path_cache"].'staticpages/'.$page.".html";
 
