@@ -493,7 +493,18 @@ function plugin_templatesetvars_assist(
 // | 機能  テンプレート変数設定
 // +---------------------------------------------------------------------------+
 {
-    global $_ASSIST_CONF;
+	global $_ASSIST_CONF;
+	
+	$languageid=COM_getLanguageId();
+    $language= COM_getLanguage();
+    $template->set_var ('languageid', $languageid);
+    $template->set_var ('language', $language);
+	if ($languageid<>"") {
+		$template->set_var ('_languageid', "_".$languageid);
+	}else{
+		$template->set_var ('_languageid', "");
+	}
+
     switch ($templatename) {
 		case 'header':
 			if ($_ASSIST_CONF['xmlns']<>""){
