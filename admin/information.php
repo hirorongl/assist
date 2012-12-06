@@ -25,6 +25,7 @@ function fncDisplay()
     global $_CONF;
 	global $LANG_ASSIST_ADMIN;
     global $_ASSIST_CONF;
+	global $_DB_dbms;
 
     $retval="";
 
@@ -43,6 +44,11 @@ function fncDisplay()
 	$T->set_file ('admin','information.thtml');
 	$T->set_var ('pi_name',$pi_name);
 	$T->set_var('version',$_ASSIST_CONF['version']);
+	
+	$T->set_var('dbms',$_DB_dbms);
+	$T->set_var('dbversion',DB_getVersion());
+	$T->set_var('php_os',PHP_OS);
+	$T->set_var('phpversion',phpversion());
 	
 	$T->set_var('piname', $LANG_ASSIST_ADMIN['piname']);
 	$T->set_var('about_thispage', $LANG_ASSIST_ADMIN['about_admin_information']);

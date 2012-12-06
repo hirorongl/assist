@@ -1,9 +1,10 @@
-<!-- plugins/assist/templates/admin/information.thtml 20120702{ -->
+<!-- plugins/assist/templates/admin/information.thtml 20121206{ -->
 
 <h2>{piname}</h2>
 <h3>information</h3>
 {about_thispage}
-<p>Ver:{version}</p>
+<p>OS:{php_os} DB:{dbms} {dbversion} PHP Version:{phpversion}</p>
+<p>Plugin Version:{version}</p>
 <p> <a href="{document_url}" target="_blank">{lang_document}</a>
 (
 <a href="{document_url}assist.html" target="_blank">{lang_configuration}</a>
