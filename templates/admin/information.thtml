@@ -5,6 +5,7 @@
 {about_thispage}
 <p>OS:{php_os} DB:{dbms} {dbversion} PHP Version:{phpversion}</p>
 <p>Plugin Version:{version}</p>
+<p>Facebook OAuth Application ID:{fbid}</p>
 <p> <a href="{document_url}" target="_blank">{lang_document}</a>
 (
 <a href="{document_url}assist.html" target="_blank">{lang_configuration}</a>

@@ -256,6 +256,12 @@ $LANG_ASSIST_ADMIN['err_marker_address'] = 'マーカー住所が記述されて
 $LANG_ASSIST_ADMIN['err_marker_coords'] = '緯度経度が計算できません'.LB;
 $LANG_ASSIST_ADMIN['err_map'] = 'マップがありません'.LB;
 
+$LANG_ASSIST_ADMIN['err_fbid'] = 
+'Facebook OAuth Application IDが登録されていません。<br{xhtml}>'.LB
+.'(コンフィギュレーション設定 Geeklog ユーザ)<br{xhtml}>'.LB
+.'Facebook のソーシャルボタンの自動タグを使用する場合は必要です。<br{xhtml}>'.LB
+;
+
 //
 $LANG_ASSIST_ADMIN['mail_save_ok'] = '保存しました';
 $LANG_ASSIST_ADMIN['mail_test_message'] = 'これはテスト配信です。配信内容を確認してください。';

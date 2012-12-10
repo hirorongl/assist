@@ -50,6 +50,11 @@ function fncDisplay()
 	$T->set_var('php_os',PHP_OS);
 	$T->set_var('phpversion',phpversion());
 	
+	if  ($_CONF['facebook_consumer_key']==""){
+		$T->set_var('fbid',$LANG_ASSIST_ADMIN['err_fbid']);
+	}else{
+		$T->set_var('fbid',$_CONF['facebook_consumer_key']);
+	}
 	$T->set_var('piname', $LANG_ASSIST_ADMIN['piname']);
 	$T->set_var('about_thispage', $LANG_ASSIST_ADMIN['about_admin_information']);
 	
