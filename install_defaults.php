@@ -65,7 +65,7 @@ $_ASSIST_DEFAULT['new_img']="<img width='29' height='11' "
     ." alt='NEW!' />";
 $_ASSIST_DEFAULT['rss_img']="<img width='35' height='16' "
     ."src='{$_CONF['site_url']}/assist/images/icon_RSS.gif' alt='RSS' "
-    ."class='icon_rss' >";
+    ."class='icon_rss' />";
 
 $_ASSIST_DEFAULT['newsletter_tid']='newsletter';
 
