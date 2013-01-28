@@ -83,8 +83,8 @@ function plugin_autotags_assist (
                 return $content;
                 break;
             case 'newstories2' :
+				$parm2_ary[]="rss_file";
                 $p=assist_parm2($p2);
-
                 $rt= phpblock_shownewstories($p1
                         ,$p['rss_file']
                         ,$p['title_trim_length']
@@ -101,8 +101,33 @@ function plugin_autotags_assist (
                 $content = str_replace ($autotag['tagstr'], $rt, $content);
                 return $content;
                 break;
-            case 'assist' :
-                $p=assist_parm2($p2);
+			case 'assist' :
+					$parm2_ary[]="id";
+					$parm2_ary[]="urlkey";
+					$parm2_ary[]='mode';
+					$parm2_ary[]='uid';
+					$parm2_ary[]='width';
+					$parm2_ary[]='height';
+					$parm2_ary[]='topics';
+					$parm2_ary[]='rss_file';
+					$parm2_ary[]='title_trim_length';
+					$parm2_ary[]='intervalday';
+					$parm2_ary[]='limitcnt';
+					$parm2_ary[]='newmarkday';
+					$parm2_ary[]='templatedir';
+					$parm2_ary[]='urlrss';
+					$parm2_ary[]='description_trim_length';
+					$parm2_ary[]='strip_tags';
+					$parm2_ary[]='templatedir';
+					$parm2_ary[]='logoutform';
+					$parm2_ary[]='type';
+					$parm2_ary[]='urlrss';
+					$parm2_ary[]='text';
+					$parm2_ary[]='maxlen';
+					$parm2_ary[]='filler';
+					$parm2_ary[]='endchars';
+					$parm2_ary[]='title';
+					$p=assist_parm2($p2,$parm2_ary);
                 switch($p1) {
                     case 'usercount':
                         $rt=DB_getItem($_TABLES['userinfo']
@@ -238,6 +263,12 @@ function plugin_autotags_assist (
                             ,$p['type']
                         );
                         break;
+                    case 'staticpage':
+                        $rt=assist_staticpagelink(
+                             $p['id']
+                            ,$p['lastparm2']
+                            );
+                        break;
 
                 }
 
@@ -250,16 +281,32 @@ function plugin_autotags_assist (
 }
 
 //第二引数分割
-function assist_parm2 ($p2)
+function assist_parm2 (
+	$p2
+	,$parm2_ary
+)
 {
     $ary=array();
     $px = explode (' ', trim ($p2));
     if (is_array ($px)) {
-        foreach ($px as $part) {
-            $a = explode (':', $part);
-            $ary["{$a[0]}"]=$a[1];
+		foreach ($px as $part) {
+			$a = explode (':', $part);
+			if (in_array($a[0],$parm2_ary)){
+				$ary["{$a[0]}"]=$a[1];
+				$skip++;			
+			}
+		}
+		
+        if (count ($px) > $skip) {
+            for ($i = 0; $i < $skip; $i++) {
+                array_shift ($px);
+            }
+            $ary["lastparm2"] = trim(implode (' ', $px));
         }
-    }
+
+	}else{
+		$lastparm2=trim($p2);
+	}
     return $ary;
 
 }
@@ -600,6 +647,11 @@ function phpblock_showstaticpage(
 // 20121116
 {
 	global $_CONF;
+	global $_PLUGINS;
+	
+	if (!in_array('staticpages', $_PLUGINS)) {
+		return "";
+	}
 
     $retval ='';
 	
@@ -613,9 +665,11 @@ function phpblock_showstaticpage(
 			}
 		}
 	}
-
+	
     if ($id==""){
-         $id="blockpage";
+        $id="blockpage";
+	}else{
+		$id=assist_switchlang($id);
 	}
 	$mode=strtoupper($mode);
 	
@@ -1323,4 +1377,81 @@ function assist_cache(
 	}
 	return $ret;
 }
+
+function assist_switchlang(
+	$id
+)
+// +---------------------------------------------------------------------------+
+// | 機能  ID多言語対応変換
+// | 書式 assist_swichlang($id)
+// |      xxxx_(言語id) 多言語モードの時に必要があれば言語idを現在の言語idに変換
+// +---------------------------------------------------------------------------+
+// | 引数 $id:ID
+// +---------------------------------------------------------------------------+
+// | 戻値 nomal:変換後のID
+// +---------------------------------------------------------------------------+
+{
+	global $_CONF;
+	$newlanguageid=assist_getnewlanguageid();
+	if  ($newlanguageid<>""){
+		if  ($id<>""){
+			$lang_len = strlen($newlanguageid);
+			$oldlanguageid=substr($id,-($lang_len));
+			if  (array_key_exists($oldlanguageid, $_CONF['language_files'])){
+				$id = substr_replace($id, $newlanguageid, -$lang_len);
+			}
+		}
+	}
+	return $id;
+}
+
+function assist_getnewlanguageid(
+)
+{
+	global $_CONF;
+	$rt="";
+	
+	$newlanguageid = COM_getLanguageId();
+	if  ($newlanguageid<>""){
+		$lang_len = strlen($newlanguageid);
+		COM_setArgNames(array('arg1'));
+		$w = strtolower(COM_applyFilter(COM_getArgument('arg1')));
+		$w = substr($w,-($lang_len+1));
+		if  (substr($w,0,1)=="_"){
+			$lang = substr($w,-($lang_len));
+			if (!empty($lang) && array_key_exists($lang, $_CONF['language_files'])) {
+				$rt=$lang;
+			}
+		}
+	}
+	return $rt; 
+}
+
+function assist_staticpagelink(
+	$sp_id
+	,$title
+)
+{
+	global $_CONF;
+	global $_PLUGINS;
+	global $_TABLES;
+	
+	if (!in_array('staticpages', $_PLUGINS)) {
+		return "";
+	}
+	
+	$rt="";
+	if (! empty($sp_id)) {
+		$sp_id=assist_switchlang($sp_id);
+        $url = COM_buildUrl($_CONF['site_url']
+                 . '/staticpages/index.php?page=' . $sp_id);
+        if (empty($title)) {
+             $title = stripslashes(DB_getItem($_TABLES['staticpage'],
+                                             'sp_title', "sp_id = '$sp_id'"));
+		}
+        $rt = COM_createLink($title, $url);
+	}
+	return $rt; 
+}
+
 ?>
