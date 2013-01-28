@@ -1,6 +1,14 @@
 Assist Plugin History/Changes:
 
-2012/01/12(1.1.0)
+2012/01/28(1.1.1)
+-----------
+Ver 1.1.0 からの主な変更
+- Geeklog 2.0の仕様に対応
+- 自動タグ機能追加　[assit:newstories
+- 自動タグ機能追加　[assist:staticpage_content
+- 自動タグ追加　[assist:cache
+- 自動タグ追加　[assist:staticpage
+- 多言語対応機能強化
 -----------
 Ver 1.0.0 からの主な変更
 - フォルダ構成みなおし
