@@ -7,7 +7,7 @@
 ## 管理画面
 $LANG_ASSIST_admin_menu = array();
 $LANG_ASSIST_admin_menu['1']= '情報';
-$LANG_ASSIST_admin_menu['2']= 'ユーザ関連';
+$LANG_ASSIST_admin_menu['2']= 'ユーザー関連';
 
 $LANG_ASSIST_admin_menu['3']= '変数関連';
 $LANG_ASSIST_admin_menu['4']= 'ニュースレター';
@@ -85,21 +85,21 @@ $LANG_ASSIST_ADMIN['export'] = 'エクスポート';
 $LANG_ASSIST_ADMIN['import'] = 'インポート';
 $LANG_ASSIST_ADMIN['importfile'] = 'パス';
 $LANG_ASSIST_ADMIN['importmsg_user'] =
-"ユーザをGeeklogに一括登録できます。<br{xhtml}>"
-."一括登録するファイルはユーザは1行あたり1人づつで、各ユーザのデータはタブ区切りで"
-."「ユーザID、氏名、ユーザ名、メールアドレス」のフィールド順です。<br{xhtml}>"
-."ユーザID、ユーザ名、メールアドレスは、重複できません。<br{xhtml}>"
-."ユーザのパスワードは無作為に決定されます。<br{xhtml}>"
-."ユーザIDが0の場合は自動発番します。<br{xhtml}>"
-."ユーザへの登録通知はおこないません。<br{xhtml}>"
+"ユーザーをGeeklogに一括登録できます。<br{xhtml}>"
+."一括登録するファイルはユーザーは1行あたり1人づつで、各ユーザーのデータはタブ区切りで"
+."「ユーザーID、氏名、ユーザー名、メールアドレス」のフィールド順です。<br{xhtml}>"
+."ユーザーID、ユーザー名、メールアドレスは、重複できません。<br{xhtml}>"
+."ユーザーのパスワードは無作為に決定されます。<br{xhtml}>"
+."ユーザーIDが0の場合は自動発番します。<br{xhtml}>"
+."ユーザーへの登録通知はおこないません。<br{xhtml}>"
 ."ファイルはかならず本サイトと同じUTF-8コードのテキスト形式で保存してください。<br{xhtml}>"
 ;
 
 $LANG_ASSIST_ADMIN['delete'] = '削除';
-$LANG_ASSIST_ADMIN['deletemsg_user'] = "ユーザを一括削除します。<br{xhtml}>";
+$LANG_ASSIST_ADMIN['deletemsg_user'] = "ユーザーを一括削除します。<br{xhtml}>";
 
-$LANG_ASSIST_ADMIN['uidfrom'] = "開始ユーザID";
-$LANG_ASSIST_ADMIN['uidto'] = "終了ユーザID";
+$LANG_ASSIST_ADMIN['uidfrom'] = "開始ユーザーID";
+$LANG_ASSIST_ADMIN['uidto'] = "終了ユーザーID";
 
 $LANG_ASSIST_ADMIN['mail1'] = '送信実行';
 $LANG_ASSIST_ADMIN['mail2'] = '送信設定';
@@ -124,9 +124,9 @@ $LANG_ASSIST_ADMIN['mail_msg3'] ="(3)送信先を指定する";
 $LANG_ASSIST_ADMIN['mail_msg4'] ="(4)送信する";
 
 $LANG_ASSIST_ADMIN['select_sid'] = '記事を選択してください';
-$LANG_ASSIST_ADMIN['wkymlmguser_on'] = '（メルマガプラグインユーザに送信できます）';
+$LANG_ASSIST_ADMIN['wkymlmguser_on'] = '（メルマガプラグインユーザーに送信できます）';
 $LANG_ASSIST_ADMIN['wkymlmguser_off'] = '※登録者全員に送信するには、送信先を「Logged-in Users」としてください。';
-$LANG_ASSIST_ADMIN['wkymlmguser_user'] = 'メルマガプラグインユーザ';
+$LANG_ASSIST_ADMIN['wkymlmguser_user'] = 'メルマガプラグインユーザー';
 
 $LANG_ASSIST_ADMIN['fromname']="差出人";
 $LANG_ASSIST_ADMIN['replyto']="差出人メールアドレス";
@@ -137,7 +137,7 @@ $LANG_ASSIST_ADMIN['toenv']="送信先環境";
 $LANG_ASSIST_ADMIN['selectgroup']="送信先グループ";
 
 $LANG_ASSIST_ADMIN['testto']="テスト送信先";
-$LANG_ASSIST_ADMIN['sendto']="送信先ユーザID範囲";
+$LANG_ASSIST_ADMIN['sendto']="送信先ユーザーID範囲";
 $LANG_ASSIST_ADMIN['sendto_remarks']="※範囲指定しない場合は、0〜0にしてください。";
 
 $LANG_ASSIST_ADMIN['mail_test'] = 'テスト送信';
@@ -172,7 +172,7 @@ $LANG_ASSIST_ADMIN['field'] = 'フィールド';
 $LANG_ASSIST_ADMIN['fields'] = 'フィールド';
 
 $LANG_ASSIST_ADMIN['udatetime'] = 'タイムスタンプ';
-$LANG_ASSIST_ADMIN['uuid'] = '更新ユーザ';
+$LANG_ASSIST_ADMIN['uuid'] = '更新ユーザー';
 
 $LANG_ASSIST_ADMIN['inpreparation'] = '(準備中)';
 $LANG_ASSIST_ADMIN['markerclear'] = 'MAPS marker クリア';
@@ -258,7 +258,7 @@ $LANG_ASSIST_ADMIN['err_map'] = 'マップがありません'.LB;
 
 $LANG_ASSIST_ADMIN['err_fbid'] = 
 'Facebook OAuth Application IDが登録されていません。<br{xhtml}>'.LB
-.'(コンフィギュレーション設定 Geeklog ユーザ)<br{xhtml}>'.LB
+.'(コンフィギュレーション設定 Geeklog ユーザー)<br{xhtml}>'.LB
 .'Facebook のソーシャルボタンの自動タグを使用する場合は必要です。<br{xhtml}>'.LB
 ;
 
