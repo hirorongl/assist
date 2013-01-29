@@ -1413,6 +1413,7 @@ function assist_getnewlanguageid(
 	
 	$newlanguageid = COM_getLanguageId();
 	if  ($newlanguageid<>""){
+		$rt=$newlanguageid;
 		$lang_len = strlen($newlanguageid);
 		COM_setArgNames(array('arg1'));
 		$w = strtolower(COM_applyFilter(COM_getArgument('arg1')));
