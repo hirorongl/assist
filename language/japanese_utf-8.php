@@ -373,7 +373,7 @@ $LANG_confignames['assist']['autotag_permissions_assist'] = '[assist: ] パー�
 $LANG_tab['assist']['tab_pro'] = 'profesional版';
 $LANG_fs['assist']['fs_pro'] = '（profesional版）';
 $LANG_confignames['assist']['path_xml'] = 'XML一括インポートディレクトリ';
-$LANG_confignames['assist']['path_xml_out'] = 'XMLエキスポートディレクトリ';
+$LANG_confignames['assist']['path_xml_out'] = 'XMLエクスポートディレクトリ';
 
 // Note: entries 0, 1, 9, 12, 17 are the same as in $LANG_configselects['Core']
 $LANG_configselects['assist'][0] =array('はい' => 1, 'いいえ' => 0);
