@@ -1415,7 +1415,10 @@ function assist_getnewlanguageid(
 	if  ($newlanguageid<>""){
 		$rt=$newlanguageid;
 		$lang_len = strlen($newlanguageid);
-		COM_setArgNames(array('arg1'));
+        for ($i = 1; $i <= 10; $i++) {
+                $names[]= "arg".$i;
+        }
+		COM_setArgNames($names);
 		$w = strtolower(COM_applyFilter(COM_getArgument('arg1')));
 		$w = substr($w,-($lang_len+1));
 		if  (substr($w,0,1)=="_"){
