@@ -160,7 +160,7 @@ $LANG_ASSIST_ADMIN['config_update_help'] = '最新の仕様に更新します ';
 
 //
 $LANG_ASSIST_ADMIN['importform'] = 'インポート';
-$LANG_ASSIST_ADMIN['exportform'] = 'エキスポート';
+$LANG_ASSIST_ADMIN['exportform'] = 'エクスポート';
 
 $LANG_ASSIST_ADMIN['seq'] = 'SEQ';
 

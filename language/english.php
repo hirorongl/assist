@@ -1,7 +1,6 @@
 <?php
 ###############################################################################
 # plugins/assist/language/english.php
-# Last Update 20120409
 ###############################################################################
 ## Admin
 $LANG_ASSIST_admin_menu = array();
@@ -106,17 +105,8 @@ $LANG_ASSIST_ADMIN['mail2'] = 'Email settings';
 
 $LANG_ASSIST_ADMIN['submit'] = 'Submit';
 
-//vers
-//not used
-$LANG_ASSIST_ADMIN['last_scheduled_run'] = 'CRON(last_scheduled_run)';
-
-
 //newsletter
 $LANG_ASSIST_ADMIN['mail_logfile'] ="Log file %s is ignored.<br{xhtml}>";
-
-//not used
-$LANG_ASSIST_ADMIN['mail_cron_off'] ="Cron schedule is ignore.<br{xhtml}>";
-$LANG_ASSIST_ADMIN['mail_cron_on'] ="assist Cron schedule is %s sec.(%s min.)<br{xhtml}>";
 
 $LANG_ASSIST_ADMIN['mail_msg'] =
 "Create story by topic '%s'. <br{xhtml}>"
@@ -153,13 +143,16 @@ $LANG_ASSIST_ADMIN['mail_send'] = 'Send now';
 
 //backup&restore
 $LANG_ASSIST_ADMIN['config'] = 'Configuration';
+
 $LANG_ASSIST_ADMIN['config_backup'] = 'Backup';
 $LANG_ASSIST_ADMIN['config_init'] = 'Initialize';
+
 $LANG_ASSIST_ADMIN['config_restore'] = 'Restre';
 $LANG_ASSIST_ADMIN['config_update'] = 'Update';
 
 $LANG_ASSIST_ADMIN['config_backup_help'] = 'Create backup file.';
 $LANG_ASSIST_ADMIN['config_init_help'] = 'Initialize.';
+
 $LANG_ASSIST_ADMIN['config_restore_help'] = 'Restore from backup.';
 $LANG_ASSIST_ADMIN['config_update_help'] = 'Update.';
 
@@ -244,6 +237,7 @@ $LANG_ASSIST_ADMIN['err_type'] = 'Ignore type';//@@@@@
 
 $LANG_ASSIST_ADMIN['err_field_w'] = 'The field is already exist.';
 
+
 $LANG_ASSIST_ADMIN['err_backup_file_not_exist'] = 'No backup files';
 $LANG_ASSIST_ADMIN['err_backup_file_non_rewritable'] = 'Not rewritable';
 
@@ -251,7 +245,6 @@ $LANG_ASSIST_ADMIN['err_fromname'] = 'Please fill in all the fields on the form 
 $LANG_ASSIST_ADMIN['err_replyto'] = 'Please fill in all the fields on the form and select a group of users from the drop down.';
 $LANG_ASSIST_ADMIN['err_sid'] = 'Please select Story.';
 $LANG_ASSIST_ADMIN['err_testto'] = 'Please fill testing Email.';
-
 
 $LANG_ASSIST_ADMIN['err_backup_file_not_exist'] = 'Could not open the backup file.';
 $LANG_ASSIST_ADMIN['err_backup_file_non_rewritable'] = 'Could not rewrite the file.';
@@ -261,7 +254,11 @@ $LANG_ASSIST_ADMIN['err_marker_address'] = 'Please fill marker address'.LB;
 $LANG_ASSIST_ADMIN['err_marker_coords'] = 'Could not calicurate coord.'.LB;
 $LANG_ASSIST_ADMIN['err_map'] = 'Could not find map.'.LB;
 
+$LANG_ASSIST_ADMIN['err_fbid'] = 'Facebook OAuth Application ID is not found.<br{xhtml}>'.LB
+.'(Configuration setting Geeklog user)<br{xhtml}>'.LB
+.'Facebook social button autotags needs.<br{xhtml}>'.LB;
 //
+
 $LANG_ASSIST_ADMIN['mail_save_ok'] = 'Saved';
 $LANG_ASSIST_ADMIN['mail_test_message'] = 'This is test. Please check this newsletter.';
 $LANG_ASSIST_ADMIN['mail_test_ok'] = 'Test is done.';
@@ -293,7 +290,6 @@ $LANG_ASSIST_ADMIN['mail_bulkgooking'] = 'Bulk booking';
 $LANG_ASSIST_ADMIN['minute'] = 'min.';
 $LANG_ASSIST_ADMIN['every'] = 'every';
 $LANG_ASSIST_ADMIN['increments'] = 'emails';
-
 
 $LANG_ASSIST_ADMIN['yy'] = '/';
 $LANG_ASSIST_ADMIN['mm'] = '/';
@@ -334,7 +330,6 @@ $LANG_configsections['assist']['title'] = 'Assist configuration';
 $LANG_configsubgroups['assist']['sg_main'] = 'Main';
 
 //---()
-
 $LANG_tab['assist']['tab_main'] = 'Main';
 $LANG_fs['assist']['fs_main'] = 'Main';
 
@@ -361,7 +356,7 @@ $LANG_confignames['assist']['aftersave'] = 'Screen changes after saved: General'
 $LANG_confignames['assist']['aftersave_admin'] = 'Screen changes after saved: Admin';
 $LANG_confignames['assist']['xmlins'] = 'xmlins';
 $LANG_confignames['assist']['default_img_url'] = 'default image url';
-
+$LANG_confignames['assist']['path_cache'] = 'Cache file path';
 //---(１)
 $LANG_tab['assist']['tab_autotag_permissions'] = 'Autotag permission';
 $LANG_fs['assist']['fs_autotag_permissions'] = 'Autotag Usage Permissions ([0]Owners [1]Group [2]Member [3]Anonymous）';
@@ -401,6 +396,5 @@ $LANG_configselects['assist'][9] =array(
     , 'Display admin' => 'admin'
     , 'Display plugin admin' => 'plugin'
         );
-
 
 ?>
