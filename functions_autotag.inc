@@ -84,7 +84,7 @@ function plugin_autotags_assist (
                 break;
             case 'newstories2' :
 				$parm2_ary[]="rss_file";
-                $p=assist_parm2($p2);
+                $p=assist_parm2($p2,$parm2_ary);
                 $rt= phpblock_shownewstories($p1
                         ,$p['rss_file']
                         ,$p['title_trim_length']
