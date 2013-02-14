@@ -1,4 +1,4 @@
-	<?php
+<?php
 /* Reminder: always indent with 4 spaces (no tabs). */
 // +---------------------------------------------------------------------------+
 // | newsletter.php 更新
