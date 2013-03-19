@@ -1,6 +1,6 @@
 
-<!-- plugins/assist/templates/headercode/article.thtml 20120206{ -->
-<meta property="og:type" content="article" {xhtml}>
+<!-- plugins/assist/templates/headercode/article.thtml 20130318{ -->
+<meta property="og:type" content="{og_type}" {xhtml}>
 <meta property="og:title" content="{og_title} - {site_name}" {xhtml}>
 <meta property="og:image" content="{og_image}" {xhtml}>
 <meta property="og:url" content="{currenturl}" {xhtml}>

@@ -360,7 +360,7 @@ function assist_GetHeaderCode(
 			
 			$image=$A['imageurl'];
 			if ($image<>""){
-				$og_image=$image;
+				$og_image=$_CONF['site_url'].$image;
 			}else{
 				$og_image =$_ASSIST_CONF["default_img_url"];
 				if ($og_image===""){
