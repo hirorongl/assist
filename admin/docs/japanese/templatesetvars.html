@@ -21,7 +21,7 @@
 <h1><a href="index.html">Assist プラグイン</h1>
 
 
-<h2><a name="templatesetvars">テーマ変数</a>(2013/03/18	 update)</h2>
+<h2><a name="templatesetvars">テーマ変数</a>(2013/03/22	 update)</h2>
 <table>
 <tr>
 	<th style="width:20%">画面</th>
@@ -52,18 +52,20 @@ headercode
 <td>
 【headercode】articles.thtml 記事
 </td>
-<td   rowspan=3>
-
+<td  >
 xhtml,
 site_url,
 currenturl,
 site_name,
 og_title,
-og_image,
-og_description,
+og_image
+<a title="記事に添付した画像またはAssistデフォルト画像またはロゴ画像" class="note_super" href="#notetext_3">*3</a>
+,og_description,
 og_type
-facebook_consumer_key<a title="Geeklogのコンフィギュレーション設定でFacebook OAuth Application IDの設定が必要です" class="note_super" href="#notefoot_1" id="notetext_1">*1</a><br/>
-site_mail<a title="標準テンプレートには記述されていません" class="note_super" href="#notefoot_2" id="notetext_2">*2</a>
+facebook_consumer_key
+<a title="Geeklogのコンフィギュレーション設定でFacebook OAuth Application IDの設定が必要です" class="note_super" href="#notetext_1">*1</a>
+<br/>site_mail
+<a title="標準テンプレートには記述されていません" class="note_super" href="#notetext_2" >*2</a>
 </td>
 </tr>
 
@@ -71,11 +73,41 @@ site_mail<a title="標準テンプレートには記述されていません" cl
 <td>
 【headercode】frontpage.thtml　トップページ
 </td>
+<td  >
+xhtml,
+site_url,
+currenturl,
+site_name,
+og_title,
+og_image
+<a title="Assistデフォルト画像またはロゴ画像" class="note_super" href="#notetext_4">*4</a>
+,og_description,
+og_type
+facebook_consumer_key
+<a title="Geeklogのコンフィギュレーション設定でFacebook OAuth Application IDの設定が必要です" class="note_super" href="#notetext_1">*1</a>
+<br/>site_mail
+<a title="標準テンプレートには記述されていません" class="note_super" href="#notetext_2" >*2</a>
+</td>
 </tr>
 
 <tr >
 <td>
 【headercode】topictop.thtml　話題トップページ
+</td>
+<td  >
+xhtml,
+site_url,
+currenturl,
+site_name,
+og_title,
+og_image
+<a title="話題アイコンまたはAssistデフォルト画像またはロゴ画像" class="note_super" href="#notetext_5">*5</a>
+,og_description,
+og_type
+facebook_consumer_key
+<a title="Geeklogのコンフィギュレーション設定でFacebook OAuth Application IDの設定が必要です" class="note_super" href="#notetext_1">*1</a>
+<br/>site_mail
+<a title="標準テンプレートには記述されていません" class="note_super" href="#notetext_2" >*2</a>
 </td>
 </tr>
 
@@ -168,11 +200,25 @@ xmlns<br/>
 </tbody>
 </table>
 
-<a class="note_super" href="#notetext_1" id="notefoot_1">*1</a>
-<span class="small">Geeklogのコンフィギュレーション設定でFacebook OAuth Application IDの設定が必要です。</span><br/>
+<br/><a class="note_super" href="#notetext_1" id="notetext_1">*1</a>
+Geeklogのコンフィギュレーション設定でFacebook OAuth Application IDの設定が必要です。
 
-<a class="note_super" href="#notetext_2" id="notefoot_2">*2</a>
-<span class="small">標準テンプレートには記述されていません。</span><br/>
+<br/><a class="note_super" href="#notetext_2" id="notetext_2">*2</a>
+標準テンプレートには記述されていません。
+
+<br/><a class="note_super" href="#notetext_3" id="notetext_3">*3</a>
+記事に添付した画像
+または<a title="Assistプラグインのコンフィギュレーション設定" class="note_super" href="assist.html#desc_default_img_url">Assistデフォルト画像</a>
+またはロゴ画像
+
+<br/><a class="note_super" href="#notetext_4" id="notetext_4">*4</a>
+<a title="Assistプラグインのコンフィギュレーション設定" class="note_super" href="assist.html#desc_default_img_url">Assistデフォルト画像</a>
+またはロゴ画像
+
+<br/><a class="note_super" href="#notetext_5" id="notetext_5">*5</a>
+話題アイコン
+または<a title="Assistプラグインのコンフィギュレーション設定" class="note_super" href="assist.html#desc_default_img_url">Assistデフォルト画像</a>
+またはロゴ画像
 
 <div class="footer">
     <a href="http://wiki.geeklog.net/">Geeklogドキュメント作成プロジェクト</a>、<a href="http://wiki.geeklog.jp/">Geeklogドキュメント日本語版作成プロジェクト</a><br />
