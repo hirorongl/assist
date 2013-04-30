@@ -34,12 +34,12 @@ function fncDisplay()
     $T = new Template($tmplfld);
 	
 	$lang = COM_getLanguageName();
-	$path = 'admin/plugins/assist/docs/';
+	$path = $_CONF['site_admin_url'].'/plugins/assist/docs/';
 	//$path = 'docs/';
-	if (!file_exists($_CONF['path_html'] . $path . $lang . '/')) {
+	if (!file_exists($path . $lang . '/')) {
 		$lang = 'japanese';//'english';
 	}
-	$document_url = $_CONF['site_url'] . '/' . $path . $lang . '/';
+	$document_url = $path . $lang . '/';
 	
 	$T->set_file ('admin','information.thtml');
 	$T->set_var ('pi_name',$pi_name);
@@ -64,6 +64,7 @@ function fncDisplay()
 	$T->set_var('online', $LANG_ASSIST_ADMIN['online']);
 	$T->set_var('lang_configuration', $LANG_ASSIST_ADMIN['configuration']);
 	$T->set_var('lang_autotags', $LANG_ASSIST_ADMIN['autotags']);
+	$T->set_var('lang_templatesetvar', $LANG_ASSIST_ADMIN['templatesetvar']);
 	
     $T->set_var('site_url', $_CONF['site_url']);
     $T->set_var('site_admin_url', $_CONF['site_admin_url']);

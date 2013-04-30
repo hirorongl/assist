@@ -1,4 +1,4 @@
-<!-- plugins/assist/templates/admin/information.thtml 20121206{ -->
+<!-- plugins/assist/templates/admin/information.thtml 20130430{ -->
 
 <h2>{piname}</h2>
 <h3>information</h3>
@@ -10,6 +10,7 @@
 (
 <a href="{document_url}assist.html" target="_blank">{lang_configuration}</a>
 :<a href="{document_url}autotags.html" target="_blank">{lang_autotags}</a>
+:<a href="{document_url}templatesetvars.html" target="_blank">{lang_templatesetvar}</a>
 )</p>
 
 <form name='assist_conf_link' action='{site_admin_url}/configuration.php' method='POST'>

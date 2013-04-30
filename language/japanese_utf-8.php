@@ -2,7 +2,7 @@
 ###############################################################################
 # plugins/assist/language/japanese_utf-8.php
 # もし万一エンコードの種類が　UTF-8でない場合は、utf-8に変換してください。
-# Last Update 20121203
+# Last Update 20130430
 ###############################################################################
 ## 管理画面
 $LANG_ASSIST_admin_menu = array();
@@ -200,6 +200,7 @@ $LANG_ASSIST_ADMIN['document'] = 'ドキュメント';
 $LANG_ASSIST_ADMIN['configuration'] = 'コンフィギュレーション設定';
 $LANG_ASSIST_ADMIN['autotags'] = '自動タグ';
 $LANG_ASSIST_ADMIN['online'] = 'オンライン';
+$LANG_ASSIST_ADMIN['templatesetvar'] = 'テーマ変数';
 
 //管理画面：このページについて
 $LANG_ASSIST_ADMIN['about_admin_information'] = '　';
