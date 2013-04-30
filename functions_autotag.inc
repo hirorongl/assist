@@ -84,8 +84,13 @@ function plugin_autotags_assist (
                 break;
             case 'newstories2' :
 				$parm2_ary[]="rss_file";
-                $p=assist_parm2($p2,$parm2_ary);
-                $rt= phpblock_shownewstories($p1
+				$parm2_ary[]="title_trim_length";
+				$parm2_ary[]="intervalday";
+				$parm2_ary[]="limitcnt";
+				$parm2_ary[]="newmarkday";
+				$parm2_ary[]="thtml";
+			$p=assist_parm2($p2,$parm2_ary);
+               $rt= phpblock_shownewstories($p1
                         ,$p['rss_file']
                         ,$p['title_trim_length']
                         ,$p['intervalday']
@@ -393,7 +398,6 @@ function phpblock_shownewstories(
     global $_CONF;
     global $_ASSIST_CONF;
     global $LANG_ASSIST;
-
     //
     if ($title_trim_length==""){
         $title_trim_length=$_ASSIST_CONF['title_trim_length'];
@@ -554,7 +558,6 @@ function phpblock_shownewstories(
 
     $sql.=" LIMIT $limitcnt".LB;
     $result = DB_query ($sql);
-
     $i=0;
     while( $A = DB_fetchArray( $result ) )    {
 		$A = array_map('stripslashes', $A);
