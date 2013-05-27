@@ -51,6 +51,7 @@ function fncEdit(
     global $LANG_ASSIST_INTROBODY;
     global $LANG_ASSIST_TOENV;
     global $LANG31;
+	global $_SCRIPTS;
 
     $retval = '';
 
@@ -138,6 +139,23 @@ function fncEdit(
     $pi_name="assist";
     $tmplfld=assist_templatePath('admin','default',$pi_name);
     $templates = new Template($tmplfld);
+	
+	// Loads jQuery UI datepicker
+	if (version_compare(VERSION, '2.0.0') >= 0) {
+		$_SCRIPTS->setJavaScriptLibrary('jquery.ui.datepicker');
+		$_SCRIPTS->setJavaScriptLibrary('jquery-ui-i18n');
+		$_SCRIPTS->setJavaScriptFile('datepicker', '/javascript/datepicker.js');
+
+		$langCode = COM_getLangIso639Code();
+		$toolTip  = 'Click and select a date';	// Should be translated
+		$imgUrl   = $_CONF['site_url'] . '/images/calendar.png';
+
+		$_SCRIPTS->setJavaScript(
+			"jQuery(function () {"
+			. "  geeklog.datepicker.set('datetime', '{$langCode}', '{$toolTip}', '{$imgUrl}');"
+			. "});", TRUE, TRUE
+		);
+	}
 
     $templates->set_file('editor',"newsletter.thtml");
 	//--
