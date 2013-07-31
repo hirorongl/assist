@@ -9,17 +9,9 @@
 	include('/path/to/geeklog/public_html/lib-common.php');
 	$path=$_ASSIST_CONF["path_cache"].'staticpages/'.$page.".html";
 
-	//
-	$query = '';
-    $comment_order = '';
-    $comment_mode  = '';
-    $comment_page = 1;
-	$display_mode = '';
-	$msg = 0;
-	$retval = SP_returnStaticpage($page, $display_mode, $comment_order, $comment_mode, $comment_page, $msg, $query);
-	file_put_contents($path, $retval);
+	//静的ページキャッシュファイル作成
+	require_once ($_CONF['path'] . 'plugins/assist/fnc_staticpagecache.inc');
 
-	$logmsg="[staticpagecache] ".$path;
-	COM_errorLog($logmsg);
+	fnc_staticpagecache($page);
 
 ?>
