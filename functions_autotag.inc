@@ -903,9 +903,13 @@ function assist_returnStaticpage(
 
         if ($mode == 'print') {
             $retval = SP_printPage($page, $A);
-        } else if ($mode =='autotag') {
-            $retval = SP_render_content(stripslashes($A['sp_content']), $A['sp_php']);
-        } else {
+		} else if ($mode =='autotag') {
+			if  (COM_versionCompare(VERSION, "2.0.1",  '>=')){
+				$retval = SP_render_content($page, stripslashes($A['sp_content']), $A['sp_php'], 0 , '');
+			}else{
+				$retval = SP_render_content(stripslashes($A['sp_content']), $A['sp_php']);
+			}
+		} else {
             $retval = SP_displayPage($page, $retval, $comment_order, $comment_mode, $msg);
         }
 
