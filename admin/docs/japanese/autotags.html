@@ -21,34 +21,12 @@
 <h1><a href="index.html">Assist プラグイン</h1>
 
 
-<h2><a name="autotags">自動タグ</a>(2013/01/28 update)</h2>
+<h2><a name="autotags">自動タグ</a>(2013/08/28 update)</h2>
 <table>
 <tr><th style="width:25%">書式</th>
     <th style="width:75%">説明</th>
 </tr>
 <tbody>
-<tr>
-<td>[newstories:話題ID RSSファイル]</td>
-<td>
-新着記事（おしらせ）<br />
-例1:[newstories:news news.rss]<br />
-例2:[newstories:]話題指定省略時はコンフィギュレーション設定値、設定値がない場合はALL<br />
-例3:[newstories:ALL]全話題<br />
-例4:[newstories:news|General] 話題の複数指定<br />
-</td>
-</tr>
-
-<tr class="r2">
-<td>[newstories2:話題ID RSSファイルほか例1参照]</td>
-<td>
-新着記事（おしらせ）<br />
-例1:[newstories2:news rss_file:news.rss title_trim_length:50 intervalday:70 limitcnt:40 newmarkday:30 thtml:xxxx]<br />
-例2:話題news を全件表示  [newstories2:news intervalday:0]<br />
-例3:話題news を/テーマ/xxxx/ のテンプレートで表示  [newstories2:news thtml:xxxx]<br />
-例4:[newstories2:ALL]全話題<br />
-例5:[newstories2:news|General] 話題の複数指定<br />
-</td>
-</tr>
 <tr>
 <td>[conf:変数名]</td>
 <td>$_CONF[変数名] の値を返す<br />
@@ -169,7 +147,7 @@ idが指定されていない場合は、blockpage が指定されたものと�
 例2:[assist:newstories topics:news rss_file:news.rss title_trim_length:50 intervalday:70 limitcnt:40 newmarkday:30 thtml:xxxx]<br />
 例3:話題news を全件表示  [assit:newstories topics:news intervalday:0]<br />
 例4:話題news を/テーマ/xxxx/ のテンプレートで表示  [assist:newstories topics:news thtml:xxxx]<br />
-例5:[assist:ALL]　全話題<br />
+例5:[assist:newstories topics:ALL]　全話題<br />
 例6:[assist:newstories topics:news|General]　話題の複数指定<br />
 </td>
 </tr>
@@ -272,6 +250,41 @@ linktext は、必ず最後に記述してください。半角スペースを�
 
 </tbody>
 </table>
+
+<h2>旧バージョンの自動タグ</h2>
+<table>
+<tr><th style="width:25%">書式</th>
+    <th style="width:75%">説明</th>
+</tr>
+<tbody>
+<tr>
+<td>[newstories:話題ID RSSファイル]
+<br />　→　[assist:newstories</td>
+<td>
+新着記事（おしらせ）<br />
+例1:[newstories:news news.rss]<br />
+例2:[newstories:]話題指定省略時はコンフィギュレーション設定値、設定値がない場合はALL<br />
+例3:[newstories:ALL]全話題<br />
+例4:[newstories:news|General] 話題の複数指定<br />
+</td>
+</tr>
+
+<tr class="r2">
+<td>[newstories2:話題ID RSSファイルほか例1参照]
+<br />　→　[assist:newstories</td>
+</td>
+<td>
+新着記事（おしらせ）<br />
+例1:[newstories2:news rss_file:news.rss title_trim_length:50 intervalday:70 limitcnt:40 newmarkday:30 thtml:xxxx]<br />
+例2:話題news を全件表示  [newstories2:news intervalday:0]<br />
+例3:話題news を/テーマ/xxxx/ のテンプレートで表示  [newstories2:news thtml:xxxx]<br />
+例4:[newstories2:ALL]全話題<br />
+例5:[newstories2:news|General] 話題の複数指定<br />
+</td>
+</tr>
+</tbody>
+</table>
+
 <h2>ブロック用関数(2010/12/03 update)</h2>
 <table>
 <tr><th style="width:25%">関数名</th>
