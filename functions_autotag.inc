@@ -440,14 +440,19 @@ function phpblock_shownewstories(
 		$ary=explode("|",$topics);
 		$topics="";
 		foreach( $ary as $val ){
-			if ($topics<>""){
-				$topics.=",";
-			}
 			//FOR GL2.0.0 
 			if (COM_versionCompare(VERSION, "2.0.0",  '>=')){
 				$tid_list = TOPIC_getChildList($val);
-				$topics.=$tid_list;
+				if  ($tid_list<>""){
+					if ($topics<>""){
+						$topics.=",";
+					}
+					$topics.=$tid_list;
+				}
 			}else{
+				if ($topics<>""){
+					$topics.=",";
+				}
 				$topics.="'$val'";
 			}
 		}
@@ -556,7 +561,7 @@ function phpblock_shownewstories(
 
     $sql.=" ORDER BY date DESC".LB;
 
-    $sql.=" LIMIT $limitcnt".LB;
+	$sql.=" LIMIT $limitcnt".LB;
     $result = DB_query ($sql);
     $i=0;
     while( $A = DB_fetchArray( $result ) )    {
