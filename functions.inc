@@ -321,8 +321,10 @@ function assist_GetHeaderCode(
 		$type = 'frontpage';
 		$og_type="website";
 		
-		$og_title=$_CONF['site_name'] . ' - ' . $_CONF['site_slogan'];
-		
+		$og_title=$_CONF['site_name'] ;
+		if  ($_CONF['site_slogan']<>""){ 
+			$og_title.= ' - ' . $_CONF['site_slogan'];
+		}
 		$og_image =$_ASSIST_CONF["default_img_url"];
 		if ($og_image===""){
 			$og_image=$site_logo;
