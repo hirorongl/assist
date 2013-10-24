@@ -287,8 +287,8 @@ function plugin_getheadercode_assist()
 	}
 	
 	//-----css
-	//$css = '/assist/css/assist.css';
-	//$_SCRIPTS->setCSSFile('assist_css', $css, true);
+	$css = '/assist/css/style.css';
+	$_SCRIPTS->setCSSFile('assist_style_css', $css, true);
 	
 	//-----metatag etc
 	$retval=assist_GetHeaderCode();
