@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+/* Assist newstories
+
+/* configuration - Assist - new mark: <span class="assist_new">new!</span> */
+
+dl.assist_stories {  
+ width:540px;  
+ line-height: 1.2;
+}  
+dl.assist_stories dt.assist_date {  
+  float:left;  
+  width:10em;  
+  padding:0;  
+  clear:left;  
+  font-weight:bold;  
+  margin: 0;  
+}  
+dl.assist_stories dd.assist_stories {  
+  margin: 0 0 0.9em 0;  
+  padding-left: 10em;  
+  width:100%;  
+}
+dl.assist_stories dd.assist_stories span.assist_new { 
+  padding: 1px 4px;
+  margin:  0 0 0 0.5em;
+  background: #ffaaaa;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 10px;
+  font-family: Arial;
+}
+p.assist_more {
+  text-align: right;
+}
