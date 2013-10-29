@@ -608,7 +608,7 @@ function phpblock_shownewstories(
     }
     //
     $more_title=$LANG_ASSIST[1];
-    if ($topics=="" OR $topics=="ALL" OR strpos($topics,",")<>"") {
+    if (ltrim(rtrim($topics,"'"),"'")=="" OR $topics=="ALL" OR strpos($topics,",")<>"") {
         $more_url=COM_buildUrl($_CONF['site_url'] . '/directory.php');
     }else{
         //$more_url=COM_buildUrl($_CONF['site_url'] . '/index.php?topic=' . $topics);
