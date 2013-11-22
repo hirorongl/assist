@@ -1,4 +1,4 @@
-<!-- plugins/databox/templates/articles/default/list.thtml { -->
+<!-- plugins/assist/templates/articles/default/list.thtml { -->
 
 <div id="assist">
 
@@ -13,4 +13,4 @@
 
 </div>
 
-<!-- } plugins/databox/templates/articles/default/list.thtml -->
+<!-- } plugins/assist/templates/articles/default/list.thtml -->

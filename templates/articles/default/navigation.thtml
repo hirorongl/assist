@@ -1,4 +1,4 @@
-<!-- plugins/databox/templates/category/default/navigation.thtml { -->
+<!-- plugins/assist/templates/articles/default/navigation.thtml { -->
 
 <div id="databox">
 
@@ -21,4 +21,4 @@
 
 </div>
 
-<!-- } plugins/databox/templates/category/default/navigation.thtml -->
+<!-- } plugins/assist/templates/articles/default/navigation.thtml -->

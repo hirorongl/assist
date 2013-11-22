@@ -6,10 +6,8 @@
 <p >webmaster:{head_webmaster}</p>
 <p >copyright:{head_copyright}</p>
 
-
 <dl>
 {rss_col}
 </dl>
-
 
 <!-- } plugins/assist/templates/rss/default/rss.thtml -->

@@ -17,6 +17,4 @@
 <input type='hidden' name='conf_group' value='assist'></form>
 <p> <a style='text-decoration: none;' href='#' onclick="document.assist_conf_link.submit()">{lang_configuration}</a></p>
 
-
 <!-- } plugins/assist/templates/admin/information.thtml -->
-

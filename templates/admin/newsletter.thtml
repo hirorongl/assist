@@ -1,4 +1,5 @@
-<!-- plugins/profile/templates/admin/newsletter.thtml 20111220{ -->
+<!-- plugins/assist/templates/admin/newsletter.thtml 20111220{ -->
+
 <form name="frmmailsetting" action="{site_admin_url}/plugins/{script}" method="post">
   <fieldset style="width:94%; border:none">
     {mail_msg}
@@ -140,5 +141,4 @@
     {list_reserv}
 </form>
 
-<!-- } plugins/proifle/templates/admin/newsletter.thtml -->
-
+<!-- } plugins/assist/templates/admin/newsletter.thtml -->

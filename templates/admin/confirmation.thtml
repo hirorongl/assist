@@ -1,4 +1,5 @@
 <!-- plugins/assist/templates/admin/confirmation.thtml  20110606 { -->
+
 <h1>{actionname}</h1>
 <form action="{actionprg}" method="post">
 <div>{lang_checklist}{checklist}</div>

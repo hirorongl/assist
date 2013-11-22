@@ -1,4 +1,4 @@
-<!-- plugins/assist/templates/featuredstories_col.thtml  20131029{ -->
+<!-- plugins/assist/templates/newstories/default/featuredstories_col.thtml  20131029{ -->
 
 <dt class="assist_date featured">{day}</dt>
 <dd class="assist_stories featured"><a href="{url}">{title}</a>{new_img}</dd>
@@ -8,4 +8,4 @@
 {introtext}
  -->
 
-<!-- } plugins/assist/templates/featuredstories_col.thtml -->
+<!-- } plugins/assist/templates/newstories/default/featuredstories_col.thtml -->

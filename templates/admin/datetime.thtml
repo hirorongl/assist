@@ -1,4 +1,4 @@
-<!-- plugins/profile/templates/datetime.thtml { -->
+<!-- plugins/assist/templates/admin/datetime.thtml { -->
 
 <form action="{datetime_script}" method="post" >
     {datetime_title}
@@ -22,5 +22,5 @@
     <input type="hidden" name="{gltoken_name}" value="{gltoken}"{xhtml}>
 </form>
 
-<!-- } plugins/proifle/templates/datetime.thtml -->
+<!-- } plugins/assist/templates/admin/datetime.thtml -->
 

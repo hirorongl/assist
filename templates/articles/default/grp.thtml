@@ -1,3 +1,5 @@
-<!-- plugins/databox/templates/category/default/grp.thtml 20110727 { -->
+<!-- plugins/assist/templates/articles/default/grp.thtml 20110727 { -->
+
     <h3>{group_name} </h3>
-<!-- } plugins/databox/templates/category/default/grp.thtml -->
+
+<!-- } plugins/assist/templates/articles/default/grp.thtml -->

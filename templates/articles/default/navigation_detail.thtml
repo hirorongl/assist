@@ -1,4 +1,4 @@
-<!-- plugins/databox/templates/category/default/navigation_detail.thtml 20101110{ -->
+<!-- plugins/assist/templates/articles/default/navigation_detail.thtml 20101110{ -->
 
 <div id="databox">
 
@@ -26,4 +26,4 @@
 
 </div>
 
-<!-- } plugins/databox/templates/category/default/navigation_detail.thtml -->
+<!-- } plugins/assist/templates/articles/default/navigation_detail.thtml -->

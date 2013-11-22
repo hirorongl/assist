@@ -1,4 +1,5 @@
 <!-- plugins/assist/templates/admin/import.thtml  { -->
+
 {msg}
 <form action="{site_admin_url}/plugins/{script}" method="post" enctype="multipart/form-data">
 {importmsg}
@@ -8,4 +9,5 @@
 
 <input type="hidden" name="{gltoken_name}" value="{gltoken}"{xhtml}>
 </form>
+
 <!-- } plugins/assist/templates/admin/import.thtml -->

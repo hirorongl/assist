@@ -1,3 +1,5 @@
-<!-- plugins/databox/templates/category/default/col.thtml 20110204 { -->
+<!-- plugins/assist/templates/articles/default/col.thtml 20110204 { -->
+
     <li>{category_link} {category_description}({count}) &nbsp;{category_name} &nbsp;{category_url}</li>
-<!-- } plugins/databox/templates/category/default/col.thtml -->
+
+<!-- } plugins/assist/templates/articles/default/col.thtml -->
