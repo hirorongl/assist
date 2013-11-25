@@ -4,11 +4,11 @@
 
 /* configuration - Assist - new mark: <span class="assist_new">new!</span> */
 
-dl.assist_stories {  
+dl.assist_stories {
   width: 540px;  
   line-height: 1.2;
 }  
-dl.assist_stories dt.assist_date {  
+dl.assist_stories dt.assist_date {
   clear: left;
   float: left;
   margin: 0 0 0.8em;
@@ -17,11 +17,15 @@ dl.assist_stories dt.assist_date {
   padding-left: 5px;
   color: #000;
 }  
-dl.assist_stories dd.assist_stories {  
+dl.assist_stories dd.assist_stories {
   margin-bottom: 0.8em;
   margin-left: 7.5em;
   width: 50em;
 }
+/*--------------------------------------
+  For New list
+--------------------------------------*/
+
 dl.assist_stories dd.assist_stories span.assist_new { 
   padding: 0 4px 0 4px;
   margin:  0 0 0 8px;
@@ -33,6 +37,18 @@ dl.assist_stories dd.assist_stories span.assist_new {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
+dl.assist_stories dd.assist_stories span.assist_rss { 
+  padding: 0 4px 0 4px;
+  margin:  0 0 0 8px;
+  background: #3333cc;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 7px;
+  font-family: Arial;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
 p.assist_more {
   text-align: right;
 }
