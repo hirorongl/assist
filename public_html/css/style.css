@@ -26,7 +26,7 @@ dl.assist_stories dd.assist_stories {
   For New list
 --------------------------------------*/
 
-dl.assist_stories dd.assist_stories span.assist_new { 
+span.assist_new { 
   padding: 0 4px 0 4px;
   margin:  0 0 0 8px;
   background: #cc3333;
@@ -37,7 +37,7 @@ dl.assist_stories dd.assist_stories span.assist_new {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-dl.assist_stories dd.assist_stories span.assist_rss { 
+span.assist_rss { 
   padding: 0 4px 0 4px;
   margin:  0 0 0 8px;
   background: #3333cc;
