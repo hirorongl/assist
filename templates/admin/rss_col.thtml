@@ -1,4 +1,4 @@
-<!-- plugins/assist/templates/admin//rss_col.thtml  { -->
+<!-- plugins/assist/templates/admin/rss_col.thtml  { -->
 
 <dt><a href="{link}">{title}</a></dt>
 <dd>{pubdate}</dd>
