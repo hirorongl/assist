@@ -60,12 +60,8 @@ $_ASSIST_DEFAULT['intervalday']=90;
 $_ASSIST_DEFAULT['limitcnt']=10;
 $_ASSIST_DEFAULT['newmarkday']=3;
 $_ASSIST_DEFAULT['topics']="";
-$_ASSIST_DEFAULT['new_img']="<img width='29' height='11' "
-    ." src='{$_CONF['site_url']}/assist/images/icon_new.gif'"
-    ." alt='NEW!' />";
-$_ASSIST_DEFAULT['rss_img']="<img width='35' height='16' "
-    ."src='{$_CONF['site_url']}/assist/images/icon_RSS.gif' alt='RSS' "
-    ."class='icon_rss' />";
+$_ASSIST_DEFAULT['new_img']='<span class="assist_new">new!</span>';
+$_ASSIST_DEFAULT['rss_img']='<span class="assist_new">RSS</span>';
 
 $_ASSIST_DEFAULT['newsletter_tid']='newsletter';
 
