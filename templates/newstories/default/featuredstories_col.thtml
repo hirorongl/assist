@@ -1,10 +1,9 @@
 <!-- plugins/assist/templates/newstories/default/featuredstories_col.thtml  20131029{ -->
 
-<dt class="assist_date featured">{day}</dt>
-<dd class="assist_stories featured"><a href="{url}">{title}</a>{new_img}</dd>
+<dt class="assist_date">{day}</dt>
+<dd class="assist_stories"><a href="{url}" class="gl-tooltip" style="cursor: pointer; ">{title}<span class="classic" style="top: 2.2em; left: 2.2em;">{meta_description}</span></a>{new_img}</dd>
 
 <!-- 
-{meta_description}
 {introtext}
  -->
 
