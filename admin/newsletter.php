@@ -666,7 +666,7 @@ function fncsendmail (
             $sql.=" where ".LB;
             $sql.=" (t1.uid = t2.uid ) ".LB;
             $sql.=" AND (t1.uid >1)  ".LB;
-			
+            $sql.=" AND (t1.status =3)  ".LB;
 			
             // ユーザの受信許可設定を無視して送る でなければ
             if ($overstyr <>"1"){
