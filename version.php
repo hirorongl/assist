@@ -1,3 +1,3 @@
 <?php
-$_ASSIST_CONF['version'] = '1.1.2.test20131029';          
+$_ASSIST_CONF['version'] = '1.1.2.test20140130';          
 ?>
