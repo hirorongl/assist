@@ -496,6 +496,7 @@ function plugin_templatesetvars_assist(
 // +---------------------------------------------------------------------------+
 {
 	global $_ASSIST_CONF;
+    global $_USER;
 	
 	$languageid=COM_getLanguageId();
     $language= COM_getLanguage();
@@ -505,6 +506,19 @@ function plugin_templatesetvars_assist(
 		$template->set_var ('_languageid', "_".$languageid);
 	}else{
 		$template->set_var ('_languageid', "");
+	}
+	
+    if  (COM_isAnonUser()){
+        $login_uid=null;
+		$login_usernmae=null;
+		$login_fullnmae=null;
+		$login_displayname=null;
+	}else{
+        $login_uid=$_USER['uid'];
+		$login_username=$_USER['username'];
+		$login_fullname=$_USER['fullname'];
+		$login_displayname=COM_getDisplayName( $_USER['uid'], $_USER['username'],
+                                           $_USER['fullname'] );
 	}
 
     switch ($templatename) {
@@ -519,6 +533,17 @@ function plugin_templatesetvars_assist(
 
 				$template->set_var('xmlns', $xmlins);
 			}
+            $template->set_var('uid', $login_uid);
+            $template->set_var('username', $login_username);
+            $template->set_var('fullname', $login_fullname);
+		    $template->set_var('displayname', $login_displayname);
+            break;
+		case 'databox':
+		case 'userbox':
+            $template->set_var('uid', $login_uid);
+            $template->set_var('username', $login_username);
+            $template->set_var('fullname', $login_fullname);
+		    $template->set_var('displayname', $login_displayname);
 			break;
 		case 'storytext':
 		case 'featuredstorytext':
