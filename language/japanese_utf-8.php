@@ -2,7 +2,7 @@
 ###############################################################################
 # plugins/assist/language/japanese_utf-8.php
 # もし万一エンコードの種類が　UTF-8でない場合は、utf-8に変換してください。
-# Last Update 20130430
+# Last Update 20130613
 ###############################################################################
 ## 管理画面
 $LANG_ASSIST_admin_menu = array();
@@ -40,25 +40,25 @@ $LANG_ASSIST['login_logout'][1] = "
 ";
 ###############################################################################
 $LANG_ASSIST_autotag_desc['newstories']="
-[newstories:話題ID RSSファイル] - 新着記事（おしらせ）。<br{xhtml}>
+[newstories:話題ID RSSファイル] - 新着記事（おしらせ）。<br".xhtml.">
 詳細は、assistプラグインのドキュメントを参照してください。
 ";
 $LANG_ASSIST_autotag_desc['newstories2']="
-[newstories2:話題ID RSSファイルほか例1	参照] - 新着記事（おしらせ）。<br{xhtml}>
+[newstories2:話題ID RSSファイルほか例1	参照] - 新着記事（おしらせ）。<br".xhtml.">
 詳細は、assistプラグインのドキュメントを参照してください。
 ";
 
 $LANG_ASSIST_autotag_desc['conf']="
-[conf:変数名] - <br{xhtml}>
-例1：[conf:site_url]<br{xhtml}>
-例2：[conf:site_name]<br{xhtml}>
-例3：[conf:site_mail]<br{xhtml}>
-例4：[conf:site_slogan]<br{xhtml}>
+[conf:変数名] - <br".xhtml.">
+例1：[conf:site_url]<br".xhtml.">
+例2：[conf:site_name]<br".xhtml.">
+例3：[conf:site_mail]<br".xhtml.">
+例4：[conf:site_slogan]<br".xhtml.">
 詳細は、assistプラグインのドキュメントを参照してください。
 ";
 $LANG_ASSIST_autotag_desc['assist']="
-[assist:〜] - <br{xhtml}>	
-[assist:usercount]ほか<br{xhtml}>
+[assist:〜] - <br".xhtml.">	
+[assist:usercount]ほか<br".xhtml.">
 詳細は、assistプラグインのドキュメントを参照してください。
 <a href=\"{$_CONF['site_admin_url']}/plugins/assist/docs/japanese/autotags.html\">*</a>
 ";
@@ -85,18 +85,18 @@ $LANG_ASSIST_ADMIN['export'] = 'エクスポート';
 $LANG_ASSIST_ADMIN['import'] = 'インポート';
 $LANG_ASSIST_ADMIN['importfile'] = 'パス';
 $LANG_ASSIST_ADMIN['importmsg_user'] =
-"ユーザーをGeeklogに一括登録できます。<br{xhtml}>"
+"ユーザーをGeeklogに一括登録できます。<br".xhtml.">"
 ."一括登録するファイルはユーザーは1行あたり1人づつで、各ユーザーのデータはタブ区切りで"
-."「ユーザーID、氏名、ユーザー名、メールアドレス」のフィールド順です。<br{xhtml}>"
-."ユーザーID、ユーザー名、メールアドレスは、重複できません。<br{xhtml}>"
-."ユーザーのパスワードは無作為に決定されます。<br{xhtml}>"
-."ユーザーIDが0の場合は自動発番します。<br{xhtml}>"
-."ユーザーへの登録通知はおこないません。<br{xhtml}>"
-."ファイルはかならず本サイトと同じUTF-8コードのテキスト形式で保存してください。<br{xhtml}>"
+."「ユーザーID、氏名、ユーザー名、メールアドレス」のフィールド順です。<br".xhtml.">"
+."ユーザーID、ユーザー名、メールアドレスは、重複できません。<br".xhtml.">"
+."ユーザーのパスワードは無作為に決定されます。<br".xhtml.">"
+."ユーザーIDが0の場合は自動発番します。<br".xhtml.">"
+."ユーザーへの登録通知はおこないません。<br".xhtml.">"
+."ファイルはかならず本サイトと同じUTF-8コードのテキスト形式で保存してください。<br".xhtml.">"
 ;
 
 $LANG_ASSIST_ADMIN['delete'] = '削除';
-$LANG_ASSIST_ADMIN['deletemsg_user'] = "ユーザーを一括削除します。<br{xhtml}>";
+$LANG_ASSIST_ADMIN['deletemsg_user'] = "ユーザーを一括削除します。<br".xhtml.">";
 
 $LANG_ASSIST_ADMIN['uidfrom'] = "開始ユーザーID";
 $LANG_ASSIST_ADMIN['uidto'] = "終了ユーザーID";
@@ -107,15 +107,15 @@ $LANG_ASSIST_ADMIN['mail2'] = '送信設定';
 $LANG_ASSIST_ADMIN['submit'] = '実行';
 
 //newsletter
-$LANG_ASSIST_ADMIN['mail_logfile'] ="ログファイル%sが無効になっています。<br{xhtml}>";
+$LANG_ASSIST_ADMIN['mail_logfile'] ="ログファイル%sが無効になっています。<br".xhtml.">";
 
 $LANG_ASSIST_ADMIN['mail_msg'] =
-"送信用記事を話題「 %s 」であらかじめ用意してください。<br{xhtml}>"
-."ニュースレターはテキスト形式に変換して送信します。<br{xhtml}>"
-."テスト送信で送信内容を十分確認したうえでニュースレターを送信してください。<br{xhtml}>"
-."※送信結果は、assist_newsletter.log に記録されます。<br{xhtml}>"
-."予約送信は遅延する場合があります。<br{xhtml}>"
-."（当サイトが誰にもアクセスされなかった場合）<br{xhtml}>"
+"送信用記事を話題「 %s 」であらかじめ用意してください。<br".xhtml.">"
+."ニュースレターはテキスト形式に変換して送信します。<br".xhtml.">"
+."テスト送信で送信内容を十分確認したうえでニュースレターを送信してください。<br".xhtml.">"
+."※送信結果は、assist_newsletter.log に記録されます。<br".xhtml.">"
+."予約送信は遅延する場合があります。<br".xhtml.">"
+."（当サイトが誰にもアクセスされなかった場合）<br".xhtml.">"
 ;
 
 $LANG_ASSIST_ADMIN['mail_msg1'] ="(1)送信内容を設定する";
@@ -186,13 +186,13 @@ $LANG_ASSIST_ADMIN['url'] = 'URL';
 
 $LANG_ASSIST_ADMIN['default'] = '既定値';
 $LANG_ASSIST_ADMIN['importmsg'] = '
-絶対パス（ディレクトリ、ファイル）またはURLを指定してください。<{XHTML}br>
-ディレクトリ指定の時は、ディレクトリ下のxmlファイルをインポートします。<{XHTML}br>
-logs/assist_xmlimport.log　にログが記録されます。<{XHTML}br>
+絶対パス（ディレクトリ、ファイル）またはURLを指定してください。<br'.XHTML.'>
+ディレクトリ指定の時は、ディレクトリ下のxmlファイルをインポートします。<br'.XHTML.'>
+logs/assist_xmlimport.log　にログが記録されます。<br'.XHTML.'>
 ';
 $LANG_ASSIST_ADMIN['exportmsg'] = '
-絶対パス（ディレクトリ）を指定してください。<{XHTML}br>
-logs/assist_xmlimport.log　にログが記録されます。<{XHTML}br>
+絶対パス（ディレクトリ）を指定してください。<br'.XHTML.'>
+logs/assist_xmlimport.log　にログが記録されます。<br'.XHTML.'>
 ';
 
 //
@@ -258,9 +258,9 @@ $LANG_ASSIST_ADMIN['err_marker_coords'] = '緯度経度が計算できません'
 $LANG_ASSIST_ADMIN['err_map'] = 'マップがありません'.LB;
 
 $LANG_ASSIST_ADMIN['err_fbid'] = 
-'Facebook OAuth Application IDが登録されていません。<br{xhtml}>'.LB
-.'(コンフィギュレーション設定 Geeklog ユーザー)<br{xhtml}>'.LB
-.'Facebook のソーシャルボタンの自動タグを使用する場合は必要です。<br{xhtml}>'.LB
+'Facebook OAuth Application IDが登録されていません。<br'.xhtml.'>'.LB
+.'(コンフィギュレーション設定 Geeklog ユーザー)<br'.xhtml.'>'.LB
+.'Facebook のソーシャルボタンの自動タグを使用する場合は必要です。<br'.xhtml.'>'.LB
 ;
 
 //
@@ -300,9 +300,9 @@ $LANG_ASSIST_ADMIN['yy'] = '年';
 $LANG_ASSIST_ADMIN['mm'] = '月';
 $LANG_ASSIST_ADMIN['dd'] = '日';
 
-$LANG_ASSIST_ADMIN['jobend'] = '処理終了しました<br{XHTML}>';
-$LANG_ASSIST_ADMIN['cnt_ok'] = '成功: %d 件<br{XHTML}>';
-$LANG_ASSIST_ADMIN['cnt_ng'] = 'エラー: %d 件<br{XHTML}>';
+$LANG_ASSIST_ADMIN['jobend'] = '処理終了しました<br'.XHTML.'>';
+$LANG_ASSIST_ADMIN['cnt_ok'] = '成功: %d 件<br'.XHTML.'>';
+$LANG_ASSIST_ADMIN['cnt_ng'] = 'エラー: %d 件<br'.XHTML.'>';
 
 ###############################################################################
 #
