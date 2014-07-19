@@ -999,13 +999,22 @@ function assist_returnUser(
                 if ($photo<>""){
                     $w="<img src=\"".$_CONF['site_url']."/images/userphotos/".$photo."\"";
                     if ($width<>0){
-                        $w.=" width=\"".$width." ";
+                        $w.=" width=\"".$width."\" ";
                     }
                     if ($height<>0){
-                        $w.=" height=\"".$height." ";
+                        $w.=" height=\"".$height."\" ";
                     }
-                    $w.=" class=\"userphoto\">";
-                }
+                    $w.=" class=\"uk-border-circle\">";
+                } else if ($_CONF['default_photo']) {
+                    $w="<img src=\"".$_CONF['default_photo']."\"";
+                    if ($width<>0){
+                        $w.=" width=\"".$width."\" ";
+                    }
+                    if ($height<>0){
+                        $w.=" height=\"".$height."\" ";
+                    }
+                    $w.=" class=\"uk-border-circle\">";
+		}
                 $rt=$w;
                 break;
 
