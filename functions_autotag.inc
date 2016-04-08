@@ -597,14 +597,25 @@ function phpblock_shownewstories(
 		$n=($i%2)+1;
         $class='class="row'.$n.'"';
         $list->set_var ('class', 'class="row'.$n.'"');
-		
-		if  ($A['perm_anon']==0){
-			$list->set_var ('class_a', "assist_nolink");
-			$list->set_var ('class_c', "assist_displaynon");
-		}else{
-    	    $list->set_var ('class_a', "gl-tooltip");
-			$list->set_var ('class_c', "classic");
-		}
+
+        $retary=assist_getTopics('article',$A['sid']);
+        $list->set_var ('permission',$retary['permission']);
+        $list->set_var ('topicslink',$retary['topicslink']);
+        $list->set_var ('topicidslink',$retary['topicidslink']);
+        $list->set_var ('topics',$retary['topics']);
+        $list->set_var ('topicids',$retary['topicids']);
+        $list->set_var ('topicidspipeline',$retary['topicidspipeline']);
+        $list->set_var ('topics_li',$retary['topics_li']);
+        $list->set_var ('topicids_li',$retary['topicids_li']);
+        $list->set_var ('topicslink_li',$retary['topicslink_li']);
+        $list->set_var ('topicidslink_li',$retary['topicidslink_li']);
+        if  ($retary['permission']==0){
+            $list->set_var ('class_a', 'class="assist_nolink"');
+            $list->set_var ('class_c', 'class="assist_displaynon"');
+        }else{
+            $list->set_var ('class_a', 'class="gl-tooltip"');
+            $list->set_var ('class_c', 'class="classic"');
+        }
 		
 		if ($A['featured']==1){
 			$list->parse ('stories_col', 'col_ft', true);
@@ -768,7 +779,6 @@ function assist_getrss(
 		$type=$value["type"];
 		$level=$value["level"];
 		$value=$value["value"];
-//echo "tag=".$tag." type=".$type." level=".$level." value=".$value."<br>";		
 		if  ($type=="open"){
 			$pubdate="";
 			$title="";
@@ -1491,6 +1501,85 @@ function assist_staticpagelink(
         $rt = COM_createLink($title, $url);
 	}
 	return $rt; 
+}
+// assist_getYopics('article',$id);
+function assist_getTopics(
+    $type
+    , $id
+)
+{
+    global $_CONF;
+    global $_TABLES;
+    global $LANG_ASSIST;
+
+    $retval = '';
+    $retary = array();
+
+    // Retrieve topic assignments
+    $sql = "SELECT ".LB;
+    $sql .= " t1.tid ".LB;
+    $sql .= " ,t2.topic ".LB;
+    $sql .= " ,t2.perm_anon ".LB;
+    $sql .= " FROM ".LB;
+    $sql .= " {$_TABLES['topic_assignments']} AS t1".LB;
+    $sql .= " ,{$_TABLES['topics']} AS t2".LB;
+    $sql .= " WHERE t1.type = '$type' AND t1.id = '$id'".LB;
+    $sql .= " AND t1.tid =t2.tid ".LB;
+    
+    $permission=1;
+    $topics="";
+    $topicslink="";
+    $topicids="";
+    $topicidslink="";
+    $topicidspipeline="";
+    $topics_li="";
+    $topicids_li="";
+    $topicslink_li="";
+    $topicidslink_li="";
+    
+        $result = DB_query ($sql);
+    $numrows = DB_numRows ($result);
+    
+    for ($i = 0; $i < $numrows; $i++) {
+        $A = DB_fetchArray ($result);
+        $A = array_map('stripslashes', $A);
+        $permission=$permission * $A['perm_anon'];
+        if  ($A['perm_anon'] == 0){
+            $topicslink.=$A['topic']." ".$LANG_ASSIST['topic_separater'];
+            $topicidslink.=$A['tid']." ".$LANG_ASSIST['topic_separater_id'];
+            $topicslink_li.="<li>".$A['topic']."</li> ";
+            $topicidslink_li.="<li>".$A['tid']."</li> ";
+        }else{
+            $wurl = COM_buildUrl($_CONF['site_url'].'/index.php?topic=' . $A['tid']);
+            $w=COM_createLink( $A['topic'],$wurl );
+            $topicslink.=$w." ".$LANG_ASSIST['topic_separater'];
+            $topicslink_li.="<li>".$w."</li> ";
+            $w=COM_createLink( $A['tid'],$wurl );
+            $topicidslink.=$w." ".$LANG_ASSIST['topic_separater_id'];
+            $topicidslink_li.="<li>".$w."</li> ";
+        }
+        $topics.=$A['topic']." ".$LANG_ASSIST['topic_separater'];
+        $topicids.=$A['tid']." ".$LANG_ASSIST['topic_separater_id'];
+        $topicidspipeline.=$A['tid']."|";
+        $topics_li.="<li>".$A['topic']."</li> ";
+        $topicids_li.="<li>".$A['tid']."</li> ";
+    }
+    if  ($permission>0) {
+        $permission=2;
+    }
+    $retary['permission']=$permission;
+    $retary['topicslink']=rtrim($topicslink,$LANG_ASSIST['topic_separater']);//話題名列挙 リンク付き
+    $retary['topicidslink']=rtrim($topicidslink,$LANG_ASSIST['topic_separater_id']);//話題ID列挙 リンク付き
+    $retary['topics']=rtrim($topics,$LANG_ASSIST['topic_separater']);//話題名列挙
+    $retary['topicids']=rtrim($topicids,$LANG_ASSIST['topic_separater_id']);//話題ID列挙
+    $retary['topicidspipeline']=rtrim($topicidspipeline,"|");//話題ID列挙パイプライン区切
+    
+    $retary['topics_li']=$topics_li;//話題名列挙 liタグ区切り
+    $retary['topicids_li']=$topicids_li;//話題ID列挙の区切り　liタグ区切り
+    $retary['topicslink_li']=$topicslink_li;//話題ID列挙の区切り　liタグ区切り
+    $retary['topicidslink_li']=$topicidslink_li;//話題ID列挙の区切り リンク付き　liタグ区切り 
+
+    return $retary;
 }
 
 ?>

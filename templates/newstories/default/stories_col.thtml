@@ -1,14 +1,27 @@
 {# begin {templatelocation} #}
-{# plugins/assist/templates/newstories/default/stories_col.thtml  20160404 #}
+{# plugins/assist/templates/newstories/default/stories_col.thtml  20160407 #}
 
 <dt class="assist_date">{day}</dt>
-<dd class="assist_stories"><a href="{url}" class="{class_a}" style="cursor: pointer; ">{title}
-<span class="{class_c}" style="top: 2.2em; left: 2.2em;">{meta_description}</span></a>{new_img}</dd>
+<dd class="assist_stories"><a href="{url}" {class_a} style="cursor: pointer; ">{title}
+<span {class_c} style="top: 2.2em; left: 2.2em;">{meta_description}</span>
+</a>{new_img}[{topicslink}]
+</dd>
 
 {#  
-{introtext}
-{class}
-{permission}
+
+
+introtext:{introtext}
+class:{class}
+permission:{permission}
+topicslink:{topicslink}</br>
+topicidslink:{topicidslink}</br>
+topics:{topics}</br>
+topicids:{topicids}</br>
+topicidspipeline:{topicidspipeline}</br>
+topics_li:{topics_li}</br>
+topicids_li:{topicids_li}</br>
+topicslink_li:{topicslink_li}</br>
+topicidslink_li:{topicidslink_li}</br>
 #}
 
 {# end {templatelocation} #}

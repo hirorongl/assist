@@ -28,7 +28,7 @@ dl.assist_stories dd.assist_stories {
     text-decoration:none;
 }
 .assist_displaynon {
-    display:non ;  
+    display:none;  
 }
 /*--------------------------------------
   For New list

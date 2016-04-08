@@ -2,7 +2,7 @@
 ###############################################################################
 # plugins/assist/language/japanese_utf-8.php
 # もし万一エンコードの種類が　UTF-8でない場合は、utf-8に変換してください。
-# Last Update 20130613
+# Last Update 20160409
 ###############################################################################
 ## 管理画面
 $LANG_ASSIST_admin_menu = array();
@@ -69,6 +69,9 @@ $LANG_ASSIST['home']="HOME";
 $LANG_ASSIST['view']="表示";
 $LANG_ASSIST['articles']="記事一覧";
 
+
+$LANG_ASSIST['topic_separater']=" / ";
+$LANG_ASSIST['topic_separater_id']=" ";
 ###############################################################################
 # admin/plugins/
 
