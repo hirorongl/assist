@@ -592,8 +592,6 @@ function phpblock_shownewstories(
 		$list->set_var ('meta_description', $meta_description);
 		$list->set_var ('introtext', $introtext);
 
-        $list->set_var ('permission', $A['perm_anon']);
-
 		$n=($i%2)+1;
         $class='class="row'.$n.'"';
         $list->set_var ('class', 'class="row'.$n.'"');
