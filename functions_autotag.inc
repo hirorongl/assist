@@ -532,6 +532,11 @@ function phpblock_shownewstories(
     //$sql.=" , t.topic".LB;
     //$sql.=" , t.tid".LB;
     $sql.=" , s.sid".LB;
+    $sql.=" ,s.owner_id".LB;
+    $sql.=" ,s.group_id".LB;
+    $sql.=" ,s.perm_owner".LB;
+    $sql.=" ,s.perm_group".LB;
+    $sql.=" ,s.perm_members".LB;
     $sql.=" ,s.perm_anon".LB;
 
 	$sql.=" FROM ".LB;
@@ -596,8 +601,16 @@ function phpblock_shownewstories(
         $class='class="row'.$n.'"';
         $list->set_var ('class', 'class="row'.$n.'"');
 
+		$permission=SEC_hasAccess2($A);
+        $list->set_var ('permission',$permission);
+        if  ($permission>=2){
+            $list->set_var ('class_a', 'class="gl-tooltip"');
+            $list->set_var ('class_c', 'class="classic"');
+        }else{
+            $list->set_var ('class_a', 'class="assist_nolink"');
+            $list->set_var ('class_c', 'class="assist_displaynon"');
+        }
         $retary=assist_getTopics('article',$A['sid']);
-        $list->set_var ('permission',$retary['permission']);
         $list->set_var ('topicslink',$retary['topicslink']);
         $list->set_var ('topicidslink',$retary['topicidslink']);
         $list->set_var ('topics',$retary['topics']);
@@ -607,14 +620,7 @@ function phpblock_shownewstories(
         $list->set_var ('topicids_li',$retary['topicids_li']);
         $list->set_var ('topicslink_li',$retary['topicslink_li']);
         $list->set_var ('topicidslink_li',$retary['topicidslink_li']);
-        if  ($retary['permission']==0){
-            $list->set_var ('class_a', 'class="assist_nolink"');
-            $list->set_var ('class_c', 'class="assist_displaynon"');
-        }else{
-            $list->set_var ('class_a', 'class="gl-tooltip"');
-            $list->set_var ('class_c', 'class="classic"');
-        }
-		
+
 		if ($A['featured']==1){
 			$list->parse ('stories_col', 'col_ft', true);
 		}else{
@@ -1517,7 +1523,12 @@ function assist_getTopics(
     $sql = "SELECT ".LB;
     $sql .= " t1.tid ".LB;
     $sql .= " ,t2.topic ".LB;
-    $sql .= " ,t2.perm_anon ".LB;
+    $sql .= " ,t2.owner_id".LB;
+    $sql .= " ,t2.group_id".LB;
+    $sql .= " ,t2.perm_owner".LB;
+    $sql .= " ,t2.perm_group".LB;
+    $sql .= " ,t2.perm_members".LB;
+	$sql .= " ,t2.perm_anon ".LB;
     $sql .= " FROM ".LB;
     $sql .= " {$_TABLES['topic_assignments']} AS t1".LB;
     $sql .= " ,{$_TABLES['topics']} AS t2".LB;
@@ -1535,19 +1546,14 @@ function assist_getTopics(
     $topicslink_li="";
     $topicidslink_li="";
     
-        $result = DB_query ($sql);
+    $result = DB_query ($sql);
     $numrows = DB_numRows ($result);
     
     for ($i = 0; $i < $numrows; $i++) {
         $A = DB_fetchArray ($result);
         $A = array_map('stripslashes', $A);
-        $permission=$permission * $A['perm_anon'];
-        if  ($A['perm_anon'] == 0){
-            $topicslink.=$A['topic']." ".$LANG_ASSIST['topic_separater'];
-            $topicidslink.=$A['tid']." ".$LANG_ASSIST['topic_separater_id'];
-            $topicslink_li.="<li>".$A['topic']."</li> ";
-            $topicidslink_li.="<li>".$A['tid']."</li> ";
-        }else{
+        $perm=SEC_hasAccess2($A);
+        if  ($perm >= 2){
             $wurl = COM_buildUrl($_CONF['site_url'].'/index.php?topic=' . $A['tid']);
             $w=COM_createLink( $A['topic'],$wurl );
             $topicslink.=$w." ".$LANG_ASSIST['topic_separater'];
@@ -1555,6 +1561,11 @@ function assist_getTopics(
             $w=COM_createLink( $A['tid'],$wurl );
             $topicidslink.=$w." ".$LANG_ASSIST['topic_separater_id'];
             $topicidslink_li.="<li>".$w."</li> ";
+        }else{
+            $topicslink.=$A['topic']." ".$LANG_ASSIST['topic_separater'];
+            $topicidslink.=$A['tid']." ".$LANG_ASSIST['topic_separater_id'];
+            $topicslink_li.="<li>".$A['topic']."</li> ";
+            $topicidslink_li.="<li>".$A['tid']."</li> ";
         }
         $topics.=$A['topic']." ".$LANG_ASSIST['topic_separater'];
         $topicids.=$A['tid']." ".$LANG_ASSIST['topic_separater_id'];
@@ -1562,10 +1573,6 @@ function assist_getTopics(
         $topics_li.="<li>".$A['topic']."</li> ";
         $topicids_li.="<li>".$A['tid']."</li> ";
     }
-    if  ($permission>0) {
-        $permission=2;
-    }
-    $retary['permission']=$permission;
     $retary['topicslink']=rtrim($topicslink,$LANG_ASSIST['topic_separater']);//話題名列挙 リンク付き
     $retary['topicidslink']=rtrim($topicidslink,$LANG_ASSIST['topic_separater_id']);//話題ID列挙 リンク付き
     $retary['topics']=rtrim($topics,$LANG_ASSIST['topic_separater']);//話題名列挙
