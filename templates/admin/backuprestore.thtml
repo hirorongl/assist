@@ -1,5 +1,5 @@
-<!-- plugins/assist/templates/admin/backuprestore.thtml 20120203 {  -->
-
+{# begin {templatelocation} #}
+{# plugins/assist/templates/admin/backuprestore.thtml 20160428 #}
 <h2>Assist</h2>
 <h3>backup & restore </h3>
 {about_thispage}
@@ -20,6 +20,4 @@
 </form>
 </blockquote>
 </fieldset>
-
-<!-- } plugins/assist/templates/admin/backuprestore.thtml -->
-
+{# end {templatelocation} #}

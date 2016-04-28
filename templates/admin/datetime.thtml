@@ -1,5 +1,5 @@
-<!-- plugins/assist/templates/admin/datetime.thtml { -->
-
+{# begin {templatelocation} #}
+{# plugins/assist/templates/admin/datetime.thtml 20160428 #}
 <form action="{datetime_script}" method="post" >
     {datetime_title}
     <select name="{datetime}_year">
@@ -21,6 +21,5 @@
     <input type="submit" name="btnsubmit" value="{save_changes}"{xhtml}>
     <input type="hidden" name="{gltoken_name}" value="{gltoken}"{xhtml}>
 </form>
-
-<!-- } plugins/assist/templates/admin/datetime.thtml -->
+{# end {templatelocation} #}
 

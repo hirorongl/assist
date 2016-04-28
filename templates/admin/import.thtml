@@ -1,13 +1,12 @@
-<!-- plugins/assist/templates/admin/import.thtml  { -->
-
+{# begin {templatelocation} #}
+{# plugins/assist/templates/admin/import.thtml 20160428 #}
 {msg}
 <form action="{site_admin_url}/plugins/{script}" method="post" enctype="multipart/form-data">
 {importmsg}
-{importfile}: <input type="file" dir="ltr" name="importfile" size="40" {xhtml}>
-<input type="hidden" name="mode" value="import" {xhtml}>
-<input type="submit" value="{submit}" name="submit"{xhtml}>
+<p>{importfile}: <input type="file" dir="ltr" name="importfile" size="40" {xhtml}></p>
+<p><input type="hidden" name="mode" value="import" {xhtml}></p>
+<p><input type="submit" value="{submit}" name="submit"{xhtml}></p>
 
 <input type="hidden" name="{gltoken_name}" value="{gltoken}"{xhtml}>
 </form>
-
-<!-- } plugins/assist/templates/admin/import.thtml -->
+{# end {templatelocation} #}

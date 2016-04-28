@@ -1,4 +1,5 @@
-<!-- plugins/assist/templates/admin/delete.thtml  { -->
+{# begin {templatelocation} #}
+{# plugins/assist/templates/admin/delete.thtml 20160428 #}
 {msg}
 <form action="{site_admin_url}/plugins/{script}" method="post" enctype="multipart/form-data">
 <div>
@@ -17,4 +18,4 @@
 <input type="hidden" name="{gltoken_name}" value="{gltoken}"{xhtml}>
 </div>
 </form>
-<!-- } plugins/assist/templates/admin/delete.thtml -->
+{# end {templatelocation} #}
