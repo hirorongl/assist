@@ -1137,15 +1137,11 @@ function assist_templatePath (
 
             $tmplfld.="/".$template;
         }
-
         if (is_dir($tmplfld)) {
 
         }else{
-
-            $tmplfld=$_CONF['path'] .'plugins/'.$pi_name.'/templates/'.$kind;
-            if ($kind<>"admin"){
-                $tmplfld.="/default";
-            }
+            COM_handle404();
+            exit;
         }
 
     }else if  ($conf_templates==="custom"){
@@ -1161,13 +1157,9 @@ function assist_templatePath (
         if (is_dir($tmplfld)){
 
         }else{
-
-            $tmplfld=$_CONF['path'] .'plugins/'.$pi_name.'/templates/'.$kind;
-            if ($kind<>"admin"){
-
-                $tmplfld.="/default";
-
-            }
+			
+            COM_handle404();
+            exit;
         }
     }else{
 
