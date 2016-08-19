@@ -365,6 +365,8 @@ $LANG_confignames['assist']['xmlins'] = 'xmlins';
 $LANG_confignames['assist']['default_img_url'] = 'デフォルト画像URL';
 $LANG_confignames['assist']['path_cache'] = 'キャッシュファイルパス';
 
+$LANG_confignames['assist']['disable_permission_ignore'] = '新着データの　permission ignore を無効にする';
+
 //---(１)
 $LANG_tab['assist']['tab_autotag_permissions'] = '自動タグのパーミッション';
 $LANG_fs['assist']['fs_autotag_permissions'] = '自動タグのパーミッション （[0]所有者 [1]グループ [2]メンバー [3]ゲスト）';

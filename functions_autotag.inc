@@ -561,7 +561,7 @@ function phpblock_shownewstories(
 	
 	
     //アクセス権のないデータ はのぞく
-    if  (strtoupper($permission)=="IGNORE"){
+    if  ($_ASSIST_CONF['disable_permission_ignore']=="0" AND strtoupper($permission)=="IGNORE"){
     }else{
         $sql .= COM_getTopicSql ('AND', 0, 't');
         $sql .= COM_getPermSql ('AND', 0, 2, 's' );
