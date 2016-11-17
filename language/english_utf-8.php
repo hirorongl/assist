@@ -181,6 +181,18 @@ $LANG_ASSIST_ADMIN['xml_def'] = 'XML definition';
 $LANG_ASSIST_ADMIN['init'] = 'Initualize';
 $LANG_ASSIST_ADMIN['list'] = 'List';
 
+$LANG_ASSIST_ADMIN['configbackup'] = 'Configuration Backup';
+$LANG_ASSIST_ADMIN['configinit'] = 'Configuration Initialize';
+$LANG_ASSIST_ADMIN['configrestore'] = 'Configuration restore';
+$LANG_ASSIST_ADMIN['configupdate'] = 'Configuration update';
+$LANG_ASSIST_ADMIN['configbackupmsg'] = 'Configuration Backup';
+$LANG_ASSIST_ADMIN['configinitmsg'] = 'Configuration Initialize';
+$LANG_ASSIST_ADMIN['configrestoremsg'] = 'Configuration restore';
+$LANG_ASSIST_ADMIN['configupdatemsg'] = 'Configuration update';
+
+$LANG_ASSIST_ADMIN['submit'] = 'Submit';
+$LANG_ASSIST_ADMIN['confirm'] = 'Sure you want to execute?';
+
 $LANG_ASSIST_ADMIN['path'] = 'Path';
 $LANG_ASSIST_ADMIN['url'] = 'URL';
 

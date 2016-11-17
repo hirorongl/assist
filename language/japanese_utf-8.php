@@ -2,7 +2,7 @@
 ###############################################################################
 # plugins/assist/language/japanese_utf-8.php
 # もし万一エンコードの種類が　UTF-8でない場合は、utf-8に変換してください。
-# Last Update 20160819
+# Last Update 20171117
 ###############################################################################
 ## 管理画面
 $LANG_ASSIST_admin_menu = array();
@@ -183,6 +183,18 @@ $LANG_ASSIST_ADMIN['mapsmarker'] = 'MAPS marker';
 $LANG_ASSIST_ADMIN['xml_def'] = 'XML定義';
 $LANG_ASSIST_ADMIN['init'] = '初期化';
 $LANG_ASSIST_ADMIN['list'] = '一覧';
+
+$LANG_ASSIST_ADMIN['configbackup'] = 'コンフィギュレーションバックアップ';
+$LANG_ASSIST_ADMIN['configinit'] = 'コンフィギュレーション初期化';
+$LANG_ASSIST_ADMIN['configrestore'] = 'コンフィギュレーションリストア';
+$LANG_ASSIST_ADMIN['configupdate'] = 'コンフィギュレーション更新';
+$LANG_ASSIST_ADMIN['configbackupmsg'] = 'バックアップを作成します';
+$LANG_ASSIST_ADMIN['configinitmsg'] = 'コンフィギュレーションを初期化します';
+$LANG_ASSIST_ADMIN['configrestoremsg'] = 'コンフィギュレーションをバックアップの内容に戻します';
+$LANG_ASSIST_ADMIN['configupdatemsg'] = 'コンフィギュレーションを最新の仕様に更新';
+
+$LANG_ASSIST_ADMIN['submit'] = '実行';
+$LANG_ASSIST_ADMIN['confirm'] = '実行してよいですか？';
 
 $LANG_ASSIST_ADMIN['path'] = '絶対パス';
 $LANG_ASSIST_ADMIN['url'] = 'URL';
