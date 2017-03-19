@@ -210,9 +210,12 @@ Log file is assist_xmlimport.log.<br'.XHTML.'>
 //
 $LANG_ASSIST_ADMIN['document'] = 'Document';
 $LANG_ASSIST_ADMIN['configuration'] = 'Configuration';
+$LANG_ASSIST_ADMIN['install'] = 'install';
 $LANG_ASSIST_ADMIN['autotags'] = 'Auto tags';
+$LANG_ASSIST_ADMIN['files'] = 'files';
 $LANG_ASSIST_ADMIN['online'] = 'Online';
 $LANG_ASSIST_ADMIN['templatesetvar'] = 'templatesetvar';
+$LANG_ASSIST_ADMIN['templatesetvars'] = 'templatesetvar';
 
 //Admin
 $LANG_ASSIST_ADMIN['about_admin_information'] = ' ';

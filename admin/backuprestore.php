@@ -28,8 +28,7 @@ function fncDisply($pi_name)
     global $_CONF;
     global $LANG_ASSIST_ADMIN;
 
-//    $tmplfld=assist_templatePath('admin','default',$pi_name);
-    $tmplfld=DATABOX_templatePath('admin','default',$pi_name);
+    $tmplfld=assist_templatePath('admin','default',$pi_name);
     $templates = new Template($tmplfld);
     $templates->set_file (array (
         'list' => 'backuprestore.thtml',
@@ -99,7 +98,7 @@ function fncMenu(
     $menu_arr[]=array('url' => $_CONF['site_admin_url'],'text' => $LANG_ADMIN['admin_home']);
     $retval .= ADMIN_createMenu(
         $menu_arr,
-        $LANG_ASSIST_ADMIN['instructions'],
+        $LANG_ASSIST_ADMIN['about_admin_backuprestore'],
         plugin_geticon_assist()
     );
     
@@ -182,7 +181,7 @@ switch ($mode) {
 	case 'configupdate':
         $information['pagetitle']=$LANG_ASSIST_ADMIN['piname'];
         $display .= fncMenu();
-        $display .= DATABOX_Confirmation($pi_name,$mode);
+        $display .= assist_Confirmation($pi_name,$mode);
         break;
     default:
         $display .= fncMenu();
@@ -193,7 +192,7 @@ $display=COM_startBlock($LANG_ASSIST_ADMIN['piname'],''
          .$display
          .COM_endBlock(COM_getBlockTemplate('_admin_block', 'footer'));
 
-$display=DATABOX_displaypage($pi_name,'_admin',$display,$information);
+$display=assist_displaypage($pi_name,'_admin',$display,$information);
 COM_output($display);
 
 
